@@ -1,12 +1,13 @@
-import { useState } from 'react'
-import './App.css'
+// import { useState } from 'react'
+import './App.scoped.css'
 
 function App() {
-  const [page, setPage] = useState<'welcome' | 'firstName' | 'lastName' | 'mix'>('welcome')
+  // const pageList = ['welcome', 'firstName', 'lastName', 'mix'];
+  // const [page, setPage] = useState<'welcome' | 'firstName' | 'lastName' | 'mix'>('welcome')
 
   return (
     <>
-
+      <div className="moose">MOOSE</div>
     </>
   )
 }
