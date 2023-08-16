@@ -6,6 +6,7 @@ import {
   Redirect
 } from "react-router-dom";
 import Home from './pages/Home/Home'
+import FirstName from './pages/FirstName/FirstName'
 import './App.scoped.css'
 
 
@@ -16,7 +17,7 @@ function App() {
   return (
     <Router>
       <Switch>
-        <Route path='/'>
+        <Route path='/firstname'>
           <FirstName />
         </Route>
         {/* <Route path='/'>
