@@ -5,7 +5,7 @@ interface IName {
   type: 'first' | 'middle' | 'either'
 }
 const FirstName = () => {
-  const formDefault: IName = {name: '', type: 'first'}
+  const formDefault: IName = { name: '', type: 'first' }
 
   const [names, setNames] = useState<IName[]>([])
   const [form, setForm] = useState<IName>(formDefault)
@@ -17,8 +17,18 @@ const FirstName = () => {
   }
 
   const formHandler = (e: any) => {
-    console.log(e)
     setForm({ ...form, [e.target.name]: e.target.value })
+  }
+
+  const mapNames = () => {
+    return names.map((x, i) => {
+      return (
+        <div key={i}>
+          <button onClick={() => setNames([...names.slice(0,i), ...names.slice(i+1, names.length)])}>x</button>
+          {x.name} | {x.type}
+        </div>
+      )
+    })
   }
 
   return (
@@ -40,7 +50,7 @@ const FirstName = () => {
       </form>
       <button>Next</button>
       {/* <div id='names'>{names.map(x => <div>{x.name}</div>)}</div> */}
-      <div id='names'>{names.map(x => <div>{x.name}, {x.type}</div>)}</div>
+      <div id='names'>{mapNames()}</div>
     </>
   )
 }
