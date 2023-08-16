@@ -16,10 +16,10 @@ function App() {
   return (
     <Router>
       <Switch>
-        {/* <Route path='/'>
+        <Route path='/'>
           <FirstName />
-          </Route>
-          <Route path='/'>
+        </Route>
+        {/* <Route path='/'>
           <LastName />
           </Route>
           <Route path='/'>
