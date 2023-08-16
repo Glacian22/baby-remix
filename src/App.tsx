@@ -1,14 +1,36 @@
-// import { useState } from 'react'
+import React from 'react'
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+} from "react-router-dom";
 import './App.scoped.css'
 
+
+
+
 function App() {
-  // const pageList = ['welcome', 'firstName', 'lastName', 'mix'];
-  // const [page, setPage] = useState<'welcome' | 'firstName' | 'lastName' | 'mix'>('welcome')
 
   return (
-    <>
-      <div className="moose">MOOSE</div>
-    </>
+    <Router>
+      <Switch>
+        <Route path='/'>
+          <Home />
+        </Route>
+        <Route path='/'>
+          <FirstName />
+        </Route>
+        <Route path='/'>
+          <LastName />
+        </Route>
+        <Route path='/'>
+          <Mix />
+        </Route>
+        <Route path='*'>
+          <Home />
+        </Route>
+      </Switch>
+    </Router>
   )
 }
 
