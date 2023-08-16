@@ -3,7 +3,9 @@ import {
   BrowserRouter as Router,
   Switch,
   Route,
+  Redirect
 } from "react-router-dom";
+import Home from './pages/Home/Home'
 import './App.scoped.css'
 
 
@@ -14,20 +16,20 @@ function App() {
   return (
     <Router>
       <Switch>
-        <Route path='/'>
-          <Home />
-        </Route>
-        <Route path='/'>
+        {/* <Route path='/'>
           <FirstName />
-        </Route>
-        <Route path='/'>
+          </Route>
+          <Route path='/'>
           <LastName />
-        </Route>
-        <Route path='/'>
+          </Route>
+          <Route path='/'>
           <Mix />
-        </Route>
-        <Route path='*'>
+        </Route> */}
+        <Route exact path='/'>
           <Home />
+        </Route>
+        <Route path='' >
+          <Redirect to='/' />
         </Route>
       </Switch>
     </Router>
