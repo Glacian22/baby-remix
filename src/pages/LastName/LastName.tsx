@@ -1,9 +1,11 @@
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
+import { lastNamesAtom } from '../../lib/atom'
+import { useAtom } from 'jotai'
 
 
 const LastName = () => {
-  const [names, setNames] = useState<string[]>([])
+  const [names, setNames] = useAtom(lastNamesAtom)
   const [lName, setlName] = useState<string>('')
 
   const acceptHandler = (e: any) => {

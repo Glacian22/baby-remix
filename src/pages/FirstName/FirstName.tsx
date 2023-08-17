@@ -1,15 +1,14 @@
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
+import { useAtom } from 'jotai'
+import { firstNamesAtom } from '../../lib/atom';
+import { IName } from '../../lib/atom'
 
-interface IName {
-  name: string;
-  type: 'first' | 'middle' | 'either'
-}
 const FirstName = () => {
   const formDefault: IName = { name: '', type: 'first' }
 
-  const [names, setNames] = useState<IName[]>([])
-  const [form, setForm] = useState<IName>(formDefault)
+  const [names, setNames] = useAtom(firstNamesAtom)
+  const [form, setForm] = useState(formDefault)
 
   const acceptHandler = (e: any) => {
     e.preventDefault()
@@ -25,7 +24,7 @@ const FirstName = () => {
     return names.map((x, i) => {
       return (
         <div key={i}>
-          <button onClick={() => setNames([...names.slice(0,i), ...names.slice(i+1, names.length)])}>x</button>
+          <button onClick={() => setNames([...names.slice(0, i), ...names.slice(i + 1, names.length)])}>x</button>
           {x.name} | {x.type}
         </div>
       )
@@ -43,7 +42,7 @@ const FirstName = () => {
           <span className='label'>can be</span>
           <select name='type' value={form.type} onChange={formHandler}>
             <option value='first'>first name</option>
-            <option value='middle'>last name</option>
+            <option value='middle'>middle name</option>
             <option value='either'>either</option>
           </select>
         </div>
