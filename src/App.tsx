@@ -7,6 +7,8 @@ import {
 } from "react-router-dom";
 import Home from './pages/Home/Home'
 import FirstName from './pages/FirstName/FirstName'
+import LastName from './pages/LastName/LastName'
+import Mix from './pages/Mix/Mix'
 import './App.scoped.css'
 
 
@@ -20,12 +22,12 @@ function App() {
         <Route path='/firstname'>
           <FirstName />
         </Route>
-        {/* <Route path='/'>
+        <Route path='/lastname'>
           <LastName />
-          </Route>
-          <Route path='/'>
+        </Route>
+        <Route path='/mix'>
           <Mix />
-        </Route> */}
+        </Route>
         <Route exact path='/'>
           <Home />
         </Route>

@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { Link } from 'react-router-dom'
 
 interface IName {
   name: string;
@@ -48,8 +49,7 @@ const FirstName = () => {
         </div>
         <button type='submit' onClick={acceptHandler}>accept</button>
       </form>
-      <button>Next</button>
-      {/* <div id='names'>{names.map(x => <div>{x.name}</div>)}</div> */}
+      <Link to={'/lastname'}>Next</Link>
       <div id='names'>{mapNames()}</div>
     </>
   )
