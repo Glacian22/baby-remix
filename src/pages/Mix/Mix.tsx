@@ -1,7 +1,7 @@
 import React, { useState } from "react"
 import { firstNamesAtom, lastNamesAtom } from "../../lib/atom"
 import { useAtom } from 'jotai'
-
+import Modal from 'react-bootstrap/Modal'
 
 const Mix = () => {
 
@@ -11,7 +11,7 @@ const Mix = () => {
   const [currentName, setCurrentName] = useState('')
   const [namesList, setNamesList] = useState<string[]>([])
 
-  let numMiddle = 1
+  let numMiddle = 3
   let showLast = true
 
   const mixName = () => {
@@ -19,15 +19,16 @@ const Mix = () => {
     let tempName = ''
 
     //get first occurance of a name with type: 'first' or 'either'
-    const firstIndex = firstShuffled.findIndex((nameObj) => (nameObj.type === 'first' || nameObj.type === 'either'))
+    const firstIndex = getNameIndex(firstShuffled, 'first')
     tempName = firstShuffled[firstIndex].name
+    firstShuffled = removeItem(firstShuffled, firstIndex)
 
-    //remove that name from the shuffled array so we don't repeat it for a middle name
-    firstShuffled = [...firstShuffled.slice(0, firstIndex), ...firstShuffled.slice(firstIndex + 1, firstShuffled.length)]
-
-    //get a middle name
-    const middleIndex = firstShuffled.findIndex((nameObj) => (nameObj.type === 'middle' || nameObj.type === 'either'))
-    tempName += " " + firstShuffled[middleIndex].name
+    //get some middle names
+    for (let i = 0; i < numMiddle; i++) {
+      const middleIndex = firstShuffled.findIndex((nameObj) => (nameObj.type === 'middle' || nameObj.type === 'either'))
+      tempName += " " + firstShuffled[middleIndex].name
+      firstShuffled = removeItem(firstShuffled, middleIndex)
+    }
 
     if (showLast) {
       tempName += " " + lastNames[0]
@@ -39,6 +40,14 @@ const Mix = () => {
     if (namesList.indexOf(tempName) === -1) {
       setNamesList([...namesList, tempName])
     }
+  }
+
+  const getNameIndex = (arr: Array<any>, type: 'first' | 'middle') => {
+    return arr.findIndex((nameObj) => (nameObj.type === type || nameObj.type === 'either'))
+  }
+
+  const removeItem = (arr: Array<any>, index: number) => {
+    return [...arr.slice(0, index), ...arr.slice(index + 1, arr.length)]
   }
 
   const shuffle = (arr: Array<any>) => {
