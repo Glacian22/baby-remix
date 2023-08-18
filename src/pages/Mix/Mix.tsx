@@ -11,7 +11,8 @@ const Mix = () => {
   const [currentName, setCurrentName] = useState('')
   const [namesList, setNamesList] = useState<string[]>([])
 
-  let numMiddle = 1;
+  let numMiddle = 1
+  let showLast = true
 
   const mixName = () => {
     let firstShuffled = shuffle(firstNames)
@@ -27,6 +28,11 @@ const Mix = () => {
     //get a middle name
     const middleIndex = firstShuffled.findIndex((nameObj) => (nameObj.type === 'middle' || nameObj.type === 'either'))
     tempName += " " + firstShuffled[middleIndex].name
+
+    if (showLast) {
+      tempName += " " + lastNames[0]
+    }
+
     setCurrentName(tempName)
 
     // add name to list, unless it already exists
