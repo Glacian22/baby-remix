@@ -1,7 +1,7 @@
 import React, { useState } from "react"
 import { firstNamesAtom, lastNamesAtom } from "../../lib/atom"
 import { useAtom } from 'jotai'
-import Modal from 'react-bootstrap/Modal'
+import Settings from "./Settings"
 
 const Mix = () => {
 
@@ -10,9 +10,13 @@ const Mix = () => {
 
   const [currentName, setCurrentName] = useState('')
   const [namesList, setNamesList] = useState<string[]>([])
+  const [showModal, setShowModal] = useState(false)
+  const [numMiddle, setNumMiddle] = useState(1)
+  const [showLast, setShowLast] = useState(true)
 
-  let numMiddle = 3
-  let showLast = true
+  const toggleModal = () => setShowModal(!showModal)
+
+  const toggleLast = () => setShowLast(!showLast)
 
   const mixName = () => {
     let firstShuffled = shuffle(firstNames)
@@ -63,8 +67,9 @@ const Mix = () => {
         </strong>
       </div>
       <button onClick={mixName}>MIX</button>
-      <button>settings</button>
+      <button onClick={toggleModal}>settings</button>
       <div>{namesList.map((name) => <div>{name}</div>)}</div>
+      <Settings show={showModal} toggleModal={toggleModal} setMiddle={setNumMiddle} toggleLast={toggleLast} />
     </div>
   )
 }
