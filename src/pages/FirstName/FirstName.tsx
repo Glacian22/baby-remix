@@ -5,15 +5,13 @@ import { firstNamesAtom } from '../../lib/atom';
 import { IName } from '../../lib/atom'
 
 const FirstName = () => {
-  const formDefault: IName = { name: '', type: 'first' }
-
   const [names, setNames] = useAtom(firstNamesAtom)
-  const [form, setForm] = useState(formDefault)
+  const [form, setForm] = useState<IName>({ name: '', type: 'first' })
 
   const acceptHandler = (e: any) => {
     e.preventDefault()
     setNames([...names, { name: form.name, type: form.type }]);
-    setForm(formDefault)
+    setForm({...form, name: ''})
   }
 
   const formHandler = (e: any) => {
