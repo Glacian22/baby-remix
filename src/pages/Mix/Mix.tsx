@@ -69,7 +69,7 @@ const Mix = () => {
       <button onClick={mixName}>MIX</button>
       <button onClick={toggleModal}>settings</button>
       <div>{namesList.map((name) => <div>{name}</div>)}</div>
-      <Settings show={showModal} toggleModal={toggleModal} setMiddle={setNumMiddle} toggleLast={toggleLast} />
+      <Settings show={showModal} toggleModal={toggleModal} middle={numMiddle} setMiddle={setNumMiddle} toggleLast={toggleLast} />
     </div>
   )
 }

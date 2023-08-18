@@ -10,9 +10,7 @@ import FirstName from './pages/FirstName/FirstName'
 import LastName from './pages/LastName/LastName'
 import Mix from './pages/Mix/Mix'
 import './App.scoped.css'
-
-
-
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 function App() {
 
