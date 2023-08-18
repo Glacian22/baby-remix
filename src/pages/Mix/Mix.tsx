@@ -3,6 +3,7 @@ import { firstNamesAtom, lastNamesAtom } from "../../lib/atom"
 import { useAtom } from 'jotai'
 import Settings from "./Settings"
 
+// TODO: guard against no names entered
 const Mix = () => {
 
   const [firstNames] = useAtom(firstNamesAtom)
@@ -69,7 +70,7 @@ const Mix = () => {
       <button onClick={mixName}>MIX</button>
       <button onClick={toggleModal}>settings</button>
       <div>{namesList.map((name) => <div>{name}</div>)}</div>
-      <Settings show={showModal} toggleModal={toggleModal} middle={numMiddle} setMiddle={setNumMiddle} toggleLast={toggleLast} />
+      <Settings show={showModal} toggleModal={toggleModal} middle={numMiddle} setMiddle={setNumMiddle} showLast={showLast} toggleLast={toggleLast} />
     </div>
   )
 }
