@@ -11,9 +11,33 @@ const Mix = () => {
   const [currentName, setCurrentName] = useState('')
   const [namesList, setNamesList] = useState<string[]>([])
 
-  const mixName = () => {
+  let numMiddle = 1;
 
+  const mixName = () => {
+    let firstShuffled = shuffle(firstNames)
+    let tempName = ''
+
+    //get first occurance of a name with type: 'first' or 'either'
+    const firstIndex = firstShuffled.findIndex((nameObj) => (nameObj.type === 'first' || nameObj.type === 'either'))
+    tempName = firstShuffled[firstIndex].name
+
+    //remove that name from the shuffled array so we don't repeat it for a middle name
+    firstShuffled = [...firstShuffled.slice(0, firstIndex), ...firstShuffled.slice(firstIndex + 1, firstShuffled.length)]
+
+    //get a middle name
+    const middleIndex = firstShuffled.findIndex((nameObj) => (nameObj.type === 'middle' || nameObj.type === 'either'))
+    tempName += " " + firstShuffled[middleIndex].name
+    setCurrentName(tempName)
+
+    // add name to list, unless it already exists
+    if (namesList.indexOf(tempName) === -1) {
+      setNamesList([...namesList, tempName])
+    }
   }
+
+  const shuffle = (arr: Array<any>) => {
+    return arr.sort(() => Math.random() - 0.5);
+  };
 
   return (
     <div>
@@ -23,11 +47,9 @@ const Mix = () => {
           {currentName}
         </strong>
       </div>
-      <button>MIX</button>
+      <button onClick={mixName}>MIX</button>
       <button>settings</button>
-      <div>{namesList.map(name => <div>{name}</div>)}</div>
-      <div>{firstNames.map(x => <div>{x.name}</div>)}</div>
-      <div>{lastNames}</div>
+      <div>{namesList.map((name) => <div>{name}</div>)}</div>
     </div>
   )
 }
