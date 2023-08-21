@@ -7,17 +7,17 @@ interface Props {
   setMiddle: Function;
   showLast: boolean;
   toggleLast: () => void;
-
+  maxMiddle: number
 }
 
-const Settings = ({ show, toggleModal, middle, setMiddle, showLast, toggleLast }: Props) => {
+const Settings = ({ show, toggleModal, middle, setMiddle, showLast, toggleLast, maxMiddle }: Props) => {
 
   return (
     <Modal centered show={show} onHide={toggleModal}>
       <Modal.Header closeButton>Settings</Modal.Header>
       <Modal.Body>
         <span>How many middle names?</span>
-        <input type='number' min='0' max='5' value={middle} onChange={e => setMiddle(e.target.value)}/>
+        <input type='number' min='0' max={maxMiddle} value={middle} onChange={e => setMiddle(e.target.value)}/>
         <br />
         <span>Show last name:</span>
         <button onClick={toggleLast}>{showLast ? 'yes' : 'no'}</button>

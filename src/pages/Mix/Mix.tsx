@@ -60,6 +60,10 @@ const Mix = () => {
     return arr.sort(() => Math.random() - 0.5);
   };
 
+  const maxMiddle = () => {
+    return firstNames.filter(x => x.type === 'middle' || x.type === 'either').length
+  }
+
   return (
     <div>
       <Link to='/lastname'>back</Link>
@@ -72,7 +76,7 @@ const Mix = () => {
       <button onClick={mixName}>MIX</button>
       <button onClick={toggleModal}>settings</button>
       <div>{namesList.map((name) => <div>{name}</div>)}</div>
-      <Settings show={showModal} toggleModal={toggleModal} middle={numMiddle} setMiddle={setNumMiddle} showLast={showLast} toggleLast={toggleLast} />
+      <Settings show={showModal} toggleModal={toggleModal} middle={numMiddle} setMiddle={setNumMiddle} showLast={showLast} toggleLast={toggleLast} maxMiddle={maxMiddle()}/>
     </div>
   )
 }
