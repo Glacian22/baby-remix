@@ -1,4 +1,5 @@
 import React, { useState } from "react"
+import { Link } from "react-router-dom"
 import { firstNamesAtom, lastNamesAtom } from "../../lib/atom"
 import { useAtom } from 'jotai'
 import Settings from "./Settings"
@@ -61,6 +62,7 @@ const Mix = () => {
 
   return (
     <div>
+      <Link to='/lastname'>back</Link>
       <span>Now let's mix up some baby names and see how they sound!</span>
       <div>
         <strong>

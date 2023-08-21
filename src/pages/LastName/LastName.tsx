@@ -31,6 +31,7 @@ const LastName = () => {
 
   return (
     <>
+      <Link to='/firstname'>back</Link>
       <form>
         <div>
           <span className='label'>last name</span>
