@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom'
-
+import "./home.scoped.css"
 
 const Home = () => {
 
