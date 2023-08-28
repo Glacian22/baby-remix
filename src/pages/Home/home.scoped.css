@@ -1,0 +1,7 @@
+.intro {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  justify-content: space-around;
+  margin: 10rem 0 10rem 0
+}

@@ -14,25 +14,27 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 function App() {
 
   return (
-    <Router>
-      <Switch>
-        <Route path='/firstname'>
-          <FirstName />
-        </Route>
-        <Route path='/lastname'>
-          <LastName />
-        </Route>
-        <Route path='/mix'>
-          <Mix />
-        </Route>
-        <Route exact path='/'>
-          <Home />
-        </Route>
-        <Route path='' >
-          <Redirect to='/' />
-        </Route>
-      </Switch>
-    </Router>
+    <div className="app-content">
+      <Router>
+        <Switch>
+          <Route path='/firstname'>
+            <FirstName />
+          </Route>
+          <Route path='/lastname'>
+            <LastName />
+          </Route>
+          <Route path='/mix'>
+            <Mix />
+          </Route>
+          <Route exact path='/'>
+            <Home />
+          </Route>
+          <Route path='' >
+            <Redirect to='/' />
+          </Route>
+        </Switch>
+      </Router>
+    </div>
   )
 }
 
