@@ -1,0 +1,7 @@
+.button-comp {
+  background-color: var(--pink);
+  padding: 1rem 1.5rem;
+  border-radius: 45%;
+  color: var(--white);
+  text-decoration: none;
+}

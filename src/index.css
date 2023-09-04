@@ -4,12 +4,13 @@
   --font-sm: 1rem;
   --font-med: 1.5rem;
   --font-lg: 2rem;
+  --white: white;
   height: 100vh;
   background-color: white;
   animation: TransitioningBackground 3s forwards;
-  color: white;
+  color: var(--white);
   font-size: var(--font-med);
-  font-weight: bold;
+  font-weight: 800;
   -webkit-text-stroke: 1px black;
 }
 
