@@ -5,13 +5,14 @@
   --font-med: 1.5rem;
   --font-lg: 2rem;
   --white: white;
+  --soft-grey: rgb(130, 130, 130);
   height: 100vh;
   background-color: white;
-  animation: TransitioningBackground 1s forwards;
+  animation: TransitioningBackground .5s forwards;
   color: var(--white);
   font-size: var(--font-med);
   font-weight: 800;
-  -webkit-text-stroke: 1px black;
+  -webkit-text-stroke: 1px var(--soft-grey);
 }
 
 @keyframes TransitioningBackground {
