@@ -1,5 +1,5 @@
 #root {
-  --lightblue: #69b8fd;
+  --lightblue: #8bc6fa;
   --pink: #e292d2;
   --font-sm: 1rem;
   --font-med: 1.5rem;
@@ -7,7 +7,7 @@
   --white: white;
   height: 100vh;
   background-color: white;
-  animation: TransitioningBackground 3s forwards;
+  animation: TransitioningBackground 1s forwards;
   color: var(--white);
   font-size: var(--font-med);
   font-weight: 800;
