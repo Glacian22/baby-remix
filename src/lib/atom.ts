@@ -10,5 +10,5 @@ export const firstNamesAtom = atom<IName[]>([])
 export const lastNamesAtom = atom<string[]>([])
 
 const defaultDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-const theme: 'light' | 'dark' | 'goth' = defaultDark ? 'dark' : 'light'
+let theme = defaultDark ? 'dark' : 'light'
 export const themeAtom = atomWithStorage('theme', theme)

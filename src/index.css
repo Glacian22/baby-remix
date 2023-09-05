@@ -1,22 +1,26 @@
-#root {
+:root {
   --lightblue: #8bc6fa;
   --pink: #e292d2;
+  --white: white;
+  --soft-grey: rgb(130, 130, 130);
   --font-sm: 1rem;
   --font-med: 1.5rem;
   --font-lg: 2rem;
   --white: white;
   --soft-grey: rgb(130, 130, 130);
-  height: 100vh;
-  background-color: white;
-  animation: TransitioningBackground .5s forwards;
-  color: var(--white);
-  font-size: var(--font-med);
-  font-weight: 800;
-  -webkit-text-stroke: 1px var(--soft-grey);
+  --stroke-width: 1px
 }
 
-@keyframes TransitioningBackground {
-  100% {
-    background-color: var(--lightblue)
-  }
+[data-theme='dark'] {
+  --lightblue: #0f4f88;
+  --pink: #6e3864;
+  --soft-grey: rgb(72, 72, 72);
+}
+
+[data-theme='goth'] {
+  --lightblue: black;
+  --pink: black;
+  --soft-grey: white;
+  --stroke-width: 0;
+  font-family: serif
 }

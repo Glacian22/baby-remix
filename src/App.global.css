@@ -1,0 +1,7 @@
+.app-global {
+  background-color: var(--lightblue);
+  color: var(--white);
+  font-size: var(--font-med);
+  font-weight: 800;
+  -webkit-text-stroke: var(--stroke-width) var(--soft-grey);
+}
