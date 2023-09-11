@@ -8,7 +8,9 @@
   --font-lg: 2rem;
   --white: white;
   --soft-grey: rgb(130, 130, 130);
-  --stroke-width: 1px
+  --stroke-width: 1px;
+  font-family: 'gothic_warregular';
+    /* @import url('https://fonts.googleapis.com/css2?family=Sunflower:wght@300&display=swap'); */
 }
 
 [data-theme='dark'] {
@@ -22,5 +24,8 @@
   --pink: black;
   --soft-grey: white;
   --stroke-width: 0;
-  font-family: serif
+  --font-sm: 1.5rem;
+  --font-med: 2rem;
+  --font-lg: 2.5rem;
+  font-family: 'gothic_warregular';
 }
