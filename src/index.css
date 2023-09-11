@@ -25,7 +25,8 @@
   --soft-grey: white;
   --stroke-width: 0;
   --font-sm: 1.5rem;
-  --font-med: 2rem;
+  --font-med: 2.5rem;
   --font-lg: 2.5rem;
   font-family: 'gothic_warregular';
+  line-height: 1.1;
 }

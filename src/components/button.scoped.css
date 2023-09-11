@@ -1,8 +1,13 @@
 .button-comp {
   background-color: var(--pink);
-  padding: 1.5rem;
+  width: 7rem;
+  height: 7rem;
   border-radius: 50%;
   border: 5px solid var(--white);
   color: var(--white);
   text-decoration: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: inherit
 }
