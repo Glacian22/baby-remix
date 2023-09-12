@@ -15,12 +15,13 @@ import './App.global.css'
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 function App() {
-  const [theme, setTheme] = useAtom(themeAtom)
+  const [theme] = useAtom(themeAtom)
 
   return (
     <div className="app-global" data-theme={theme}>
       <div className=" app-content">
-        <button onClick={() => setTheme(theme === 'light' ? 'dark' : theme === 'dark' ? 'goth' : 'light')}>theme</button>
+         {/* for debugging theme */}
+        {/* <button onClick={() => setTheme(theme === 'light' ? 'dark' : theme === 'dark' ? 'goth' : 'light')}>theme</button> */}
         <Router>
           <Switch>
             <Route path='/firstname'>
