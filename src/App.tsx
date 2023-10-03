@@ -8,6 +8,7 @@ import Home from './pages/Home/Home'
 import FirstName from './pages/FirstName/FirstName'
 import LastName from './pages/LastName/LastName'
 import Mix from './pages/Mix/Mix'
+import Navbar from "./components/Navbar";
 import { themeAtom } from "./lib/atom";
 import { useAtom } from "jotai"
 import './App.scoped.css'
@@ -15,6 +16,7 @@ import './App.global.css'
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 function App() {
+  // const [theme, setTheme] = useAtom(themeAtom)
   const [theme] = useAtom(themeAtom)
 
   return (
@@ -23,6 +25,7 @@ function App() {
          {/* for debugging theme */}
         {/* <button onClick={() => setTheme(theme === 'light' ? 'dark' : theme === 'dark' ? 'goth' : 'light')}>theme</button> */}
         <Router>
+          <Navbar />
           <Switch>
             <Route path='/firstname'>
               <FirstName />
