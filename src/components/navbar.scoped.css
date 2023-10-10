@@ -1,0 +1,13 @@
+nav {
+  display: flex;
+  padding: .1rem;
+  align-items: center;
+}
+
+#theme-btn {
+  border: 2px solid white;
+  border-radius: .5rem;
+  background-color: var(--pink);
+  color: var(--white);
+  font-weight: bold;
+}
