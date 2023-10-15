@@ -1,7 +1,10 @@
 .app-content {
-  margin: 0 1rem 0 1rem;
   height: 100vh;
   transition: inherit;
   display: grid;
   grid-template-rows: 50px 1fr;
+}
+
+#content-wrap {
+  margin: 1rem
 }

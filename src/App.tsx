@@ -23,26 +23,28 @@ function App() {
       <div className=" app-content">
         <Router>
           <Navbar />
-          <Switch>
-            <Route path='/firstname'>
-              <FirstName />
-            </Route>
-            <Route path='/lastname'>
-              <LastName />
-            </Route>
-            <Route path='/mix'>
-              <Mix />
-            </Route>
-            <Route exact path='/'>
-              <Home />
-            </Route>
-            <Route path='' >
-              <Redirect to='/' />
-            </Route>
-          </Switch>
+          <div id="content-wrap">
+            <Switch>
+              <Route path='/firstname'>
+                <FirstName />
+              </Route>
+              <Route path='/lastname'>
+                <LastName />
+              </Route>
+              <Route path='/mix'>
+                <Mix />
+              </Route>
+              <Route exact path='/'>
+                <Home />
+              </Route>
+              <Route path='' >
+                <Redirect to='/' />
+              </Route>
+            </Switch>
+          </div>
         </Router>
       </div>
-    </div>
+    </div >
   )
 }
 
