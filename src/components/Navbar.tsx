@@ -8,8 +8,10 @@ const Navbar = () => {
 
   return (
     <nav>
-      <span>Baby Mix!</span>
-      <button id='theme-btn' onClick={() => setTheme(theme === 'light' ? 'dark' : theme === 'dark' ? 'goth' : 'light')}>{theme}</button>
+      <div className='app-width'>
+        <span>Baby Mix!</span>
+        <button id='theme-btn' onClick={() => setTheme(theme === 'light' ? 'dark' : theme === 'dark' ? 'goth' : 'light')}>{theme}</button>
+      </div>
     </nav>
   )
 }

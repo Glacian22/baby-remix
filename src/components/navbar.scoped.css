@@ -1,9 +1,14 @@
 nav {
-  display: flex;
   padding: .25rem;
+  background-color: var(--pink);
+  transition: inherit
+}
+
+nav > .app-width {
+  display: flex;
   align-items: center;
   justify-content: space-between;
-  background-color: var(--pink);
+  margin: auto;
   transition: inherit
 }
 

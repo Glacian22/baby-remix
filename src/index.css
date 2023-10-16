@@ -11,6 +11,10 @@
     /* @import url('https://fonts.googleapis.com/css2?family=Sunflower:wght@300&display=swap'); */
 }
 
+.app-width {
+  max-width: 1024px
+}
+
 [data-theme='dark'] {
   --lightblue: #0f4f88;
   --pink: #6e3864;
