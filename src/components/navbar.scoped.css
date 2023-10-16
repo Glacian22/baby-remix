@@ -1,6 +1,7 @@
 nav {
   padding: .25rem;
   background-color: var(--pink);
+  width: 100%;
   transition: inherit
 }
 
