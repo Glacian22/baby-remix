@@ -1,8 +1,6 @@
 :root {
   --lightblue: #8bc6fa;
   --pink: #e292d2;
-  --white: white;
-  --soft-grey: rgb(130, 130, 130);
   --font-sm: 1rem;
   --font-med: 1.5rem;
   --font-lg: 2rem;
@@ -11,6 +9,10 @@
   --stroke-width: 1px;
   font-family: 'gothic_warregular';
     /* @import url('https://fonts.googleapis.com/css2?family=Sunflower:wght@300&display=swap'); */
+}
+
+.app-width {
+  max-width: 1024px
 }
 
 [data-theme='dark'] {

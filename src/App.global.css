@@ -7,3 +7,13 @@
   transition-property: background-color, color, -webkit-text-stroke;
   transition-duration: .75s;
 }
+
+#content-wrap {
+  max-width: 1024px;
+  display: flex;
+  margin: 0 auto;
+}
+
+#content-wrap > * {
+  margin: .5rem
+}

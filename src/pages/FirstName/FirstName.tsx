@@ -10,7 +10,11 @@ const FirstName = () => {
 
   const acceptHandler = (e: any) => {
     e.preventDefault()
-    setNames([...names, { name: form.name, type: form.type }]);
+    const trimmed = form.name.trim()
+    if (trimmed.length === 0) {
+      return
+    }
+    setNames([...names, { name: trimmed, type: form.type }])
     setForm({...form, name: ''})
   }
 
