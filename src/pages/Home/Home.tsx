@@ -7,7 +7,7 @@ const Home = () => {
   return (
     <div className='intro'>
       <div>Here's a whole bunch of intro text telling you how to use the Baby Name Mixer :D :D :D</div>
-      <motion.div animate={{y: [300, 0]}} transition={{type: 'spring', delay: .5, duration: .75, bounce: .65}}>
+      <motion.div animate={{y: [300, 0]}} transition={{type: 'spring', bounce: .5, duration: .5}}>
         <Button to='FirstName'>GO!</Button >
       </motion.div>
     </div>
