@@ -9,7 +9,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 function App() {
   const [theme] = useAtom(themeAtom)
-
+ 
   return (
     <div className="app-global" data-theme={theme}>
       <div className=" app-content">
