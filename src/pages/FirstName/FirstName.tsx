@@ -1,8 +1,10 @@
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
+import { motion } from 'framer-motion'
 import { useAtom } from 'jotai'
 import { firstNamesAtom } from '../../lib/atom';
 import { IName } from '../../lib/atom'
+// import { variants, itemVariants } from '../../lib/anims'
 
 const FirstName = () => {
   const [names, setNames] = useAtom(firstNamesAtom)
@@ -35,7 +37,7 @@ const FirstName = () => {
 
   return (
     <>
-      <form>
+      <motion.form>
         <div>
           <span className='label'>name</span>
           <input type='text' name='name' value={form.name} onChange={formHandler}></input>
@@ -49,7 +51,7 @@ const FirstName = () => {
           </select>
         </div>
         <button type='submit' onClick={acceptHandler}>accept</button>
-      </form>
+      </motion.form>
       <Link to={'/lastname'}>Next</Link>
       <div id='names'>{mapNames()}</div>
     </>
