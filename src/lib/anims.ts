@@ -6,7 +6,8 @@ export const variants = {
   },
   exit: {
     transition: {
-      staggerChildren: 0.1
+      staggerChildren: 0.1,
+      staggerDirection: -1
     }
   }
 }
