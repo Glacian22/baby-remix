@@ -5,6 +5,7 @@ import { useAtom } from 'jotai'
 import { firstNamesAtom } from '../../lib/atom';
 import { IName } from '../../lib/atom'
 import { variants, itemVariants } from '../../lib/anims'
+import './firstName.scoped.css'
 
 const FirstName = () => {
   const [names, setNames] = useAtom(firstNamesAtom)
