@@ -13,6 +13,9 @@ export const variants = {
 }
 
 export const itemVariants = {
+  initial: {
+    y: 2000
+  },
   enter: {
     y: [2000, 0],
     transition: { type: "spring", stiffness: 600, damping: 40},

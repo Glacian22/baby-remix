@@ -4,7 +4,7 @@ import { motion } from 'framer-motion'
 import { useAtom } from 'jotai'
 import { firstNamesAtom } from '../../lib/atom';
 import { IName } from '../../lib/atom'
-// import { variants, itemVariants } from '../../lib/anims'
+import { variants, itemVariants } from '../../lib/anims'
 
 const FirstName = () => {
   const [names, setNames] = useAtom(firstNamesAtom)
@@ -17,7 +17,7 @@ const FirstName = () => {
       return
     }
     setNames([...names, { name: trimmed, type: form.type }])
-    setForm({...form, name: ''})
+    setForm({ ...form, name: '' })
   }
 
   const formHandler = (e: any) => {
@@ -36,8 +36,8 @@ const FirstName = () => {
   }
 
   return (
-    <>
-      <motion.form id='first-name'>
+    <motion.div id='first-name' variants={variants} animate='enter' exit='exit' initial='initial'>
+      <motion.form variants={itemVariants} key='fname-form'>
         <div>
           <span className='label'>name</span>
           <input type='text' name='name' value={form.name} onChange={formHandler}></input>
@@ -52,9 +52,11 @@ const FirstName = () => {
         </div>
         <button type='submit' onClick={acceptHandler}>accept</button>
       </motion.form>
-      <Link to={'/lastname'}>Next</Link>
-      <div id='names'>{mapNames()}</div>
-    </>
+      <motion.div id='names' variants={itemVariants} key='names-list'>{mapNames()}</motion.div>
+      <motion.div variants={itemVariants} key='next-btn'>
+        <Link to={'/lastname'}>Next</Link>
+      </motion.div>
+    </motion.div>
   )
 }
 
