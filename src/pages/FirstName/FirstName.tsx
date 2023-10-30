@@ -4,7 +4,7 @@ import { motion } from 'framer-motion'
 import { useAtom } from 'jotai'
 import { firstNamesAtom } from '../../lib/atom';
 import { IName } from '../../lib/atom'
-import { variants, itemVariants } from '../../lib/anims'
+// import { variants, itemVariants } from '../../lib/anims'
 
 const FirstName = () => {
   const [names, setNames] = useAtom(firstNamesAtom)
