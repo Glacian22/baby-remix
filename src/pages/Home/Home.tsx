@@ -8,14 +8,39 @@ const Home = () => {
 
   const [locationHist] = useAtom(locationHistAtom)
   console.log(locationHist)
+
+  const variants = {
+    enter: {
+      transition: {
+        staggerChildren: 0.1
+      }
+    },
+    exit: {
+      transition: {
+        staggerChildren: 0.1
+      }
+    }
+  }
+
+  const itemVariants = {
+    enter: {
+      y: [100, 0],
+      transition: { type: 'spring', bounce: .5, duration: .5 }
+    },
+    exit: {
+      y: [0, 100],
+      transition: { type: 'spring', bounce: .5, duration: .5 }
+    }
+  }
+
   return (
-    <div className='intro'>
-      <motion.div key='explainer' exit={{ x: -300, opacity: 0 }}>Here's a whole bunch of intro text telling you how to use the Baby Name Mixer :D :D :D
+    <motion.div className='intro' variants={variants} initial='enter' exit='exit'>
+      <motion.div key='explainer' variants={itemVariants}>Here's a whole bunch of intro text telling you how to use the Baby Name Mixer :D :D :D
       </motion.div>
-      <motion.div key='hi' exit={{ x: -300, opacity: 0}} animate={{ y: [300, 0] }} transition={{ type: 'spring', bounce: .5, duration: .5 }}>
+      <motion.div key='hi' variants={itemVariants}>
         <Button to='FirstName'>GO!</Button >
       </motion.div>
-    </div>
+    </motion.div>
   )
 
 }
