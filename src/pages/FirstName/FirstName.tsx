@@ -37,7 +37,7 @@ const FirstName = () => {
 
   return (
     <>
-      <motion.form>
+      <motion.form id='first-name'>
         <div>
           <span className='label'>name</span>
           <input type='text' name='name' value={form.name} onChange={formHandler}></input>
