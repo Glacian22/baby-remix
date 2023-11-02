@@ -38,21 +38,21 @@ const FirstName = () => {
 
   return (
     <motion.div id='first-name' variants={variants} animate='enter' exit='exit' initial='initial'>
-      <motion.form variants={itemVariants} key='fname-form'>
-        <div>
+      <form>
+        <motion.div variants={itemVariants} key='fname'>
           <span className='label'>name</span>
           <input type='text' name='name' value={form.name} onChange={formHandler}></input>
-        </div>
-        <div>
+        </motion.div>
+        <motion.div variants={itemVariants} key='fname-select'>
           <span className='label'>can be</span>
           <select name='type' value={form.type} onChange={formHandler}>
             <option value='first'>first name</option>
             <option value='middle'>middle name</option>
             <option value='either'>either</option>
           </select>
-        </div>
-        <button type='submit' onClick={acceptHandler}>accept</button>
-      </motion.form>
+        </motion.div>
+        <motion.button type='submit' onClick={acceptHandler} variants={itemVariants} key='fname-accept'>accept</motion.button>
+      </form>
       <motion.div id='names' variants={itemVariants} key='names-list'>{mapNames()}</motion.div>
       <motion.div variants={itemVariants} key='next-btn'>
         <Link to={'/lastname'}>Next</Link>
