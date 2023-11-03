@@ -41,7 +41,7 @@ const FirstName = () => {
       <form>
         <motion.div variants={itemVariants} key='fname'>
           <span className='label'>name</span>
-          <input type='text' name='name' value={form.name} onChange={formHandler}></input>
+          <input id='fname-input' type='text' name='name' value={form.name} onChange={formHandler}></input>
         </motion.div>
         <motion.div variants={itemVariants} key='fname-select'>
           <span className='label'>can be</span>

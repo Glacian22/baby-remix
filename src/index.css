@@ -7,6 +7,7 @@
   --white: white;
   --soft-grey: rgb(130, 130, 130);
   --stroke-width: 1px;
+  --border-rad: .5rem;
   font-family: 'gothic_warregular';
     /* @import url('https://fonts.googleapis.com/css2?family=Sunflower:wght@300&display=swap'); */
 }
