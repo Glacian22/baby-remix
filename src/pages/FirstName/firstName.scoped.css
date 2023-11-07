@@ -1,9 +1,16 @@
 #first-name {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-  align-items: center;
   transition: inherit;
+}
+
+#first-name > form {
+  margin-top: 5rem;
+  display: flex;
+  /* align-items: baseline; */
+  flex-direction: column;
+}
+
+#first-name > form > * {
+  margin-bottom: 1rem;
 }
 
 #first-name input,select {
@@ -15,13 +22,16 @@
   background-color: var(--white)
 }
 
-/* #first-name select {
 
-} */
+
+#first-name > form > button {
+  align-self: center;
+}
 
 #names {
   background-color: var(--white);
   min-height: 40px;
   width: 100%;
   border-radius: var(--border-rad);
+  overflow: scroll
 }
