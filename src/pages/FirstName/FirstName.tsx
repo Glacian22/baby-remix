@@ -17,7 +17,7 @@ const FirstName = () => {
     if (trimmed.length === 0) {
       return
     }
-    setNames([...names, { name: trimmed, type: form.type }])
+    setNames([{ name: trimmed, type: form.type }, ...names])
     setForm({ ...form, name: '' })
   }
 
