@@ -4,7 +4,7 @@ import { motion } from 'framer-motion'
 import { useAtom } from 'jotai'
 import { firstNamesAtom } from '../../lib/atom';
 import { IName } from '../../lib/atom'
-import { variants, itemVariants } from '../../lib/anims'
+import { variants, itemVariants, selectVariants, selectItemVariants } from '../../lib/anims'
 import './firstName.scoped.css'
 
 const FirstName = () => {
@@ -36,19 +36,21 @@ const FirstName = () => {
     })
   }
 
+  //TODO: make fun animated select element
+
   return (
     <motion.div id='first-name' variants={variants} animate='enter' exit='exit' initial='initial'>
       <form>
         <motion.div variants={itemVariants} key='fname'>
-          <span className='label'>name</span>
+          <label htmlFor='fname-input' className='label'>name</label>
           <input id='fname-input' type='text' name='name' value={form.name} onChange={formHandler}></input>
         </motion.div>
         <motion.div variants={itemVariants} key='fname-select'>
-          <span className='label'>can be</span>
-          <motion.select name='type' value={form.type} onChange={formHandler}>
-            <option value='first'>first name</option>
-            <option value='middle'>middle name</option>
-            <option value='either'>either</option>
+          <label htmlFor='type' className='label'>can be</label>
+          <motion.select id='type' name='type' value={form.type} onChange={formHandler} variants={selectVariants} initial='initial' animate='open'>
+            <motion.option value='first' key='first' variants={selectItemVariants}>first name</motion.option>
+            <motion.option value='middle' key='middle' variants={selectItemVariants}>middle name</motion.option>
+            <motion.option value='either' key='either' variants={selectItemVariants}>either</motion.option>
           </motion.select>
         </motion.div>
         <motion.button type='submit' onClick={acceptHandler} variants={itemVariants} key='fname-accept'>add that name!</motion.button>

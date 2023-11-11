@@ -28,3 +28,30 @@ export const itemVariants = {
     transition: { type: "spring", stiffness: 500, damping: 35 }
   }
 }
+
+export const selectVariants = {
+  initial: {
+    transition: {
+      staggerChildren: 0.1
+    }
+  },
+  open: {
+    transition: {
+      staggerChildren: 0.1
+    }
+  }
+}
+
+export const selectItemVariants = {
+  initial: {
+    opacity: 0,
+  },
+  open: {
+    opacity: .5,
+    transition: { duration: .5},
+  },
+}
+
+
+
+
