@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { Link } from 'react-router-dom'
+import Button from '../../components/Button'
 import { motion } from 'framer-motion'
 import { useAtom } from 'jotai'
 import { firstNamesAtom } from '../../lib/atom';
@@ -29,14 +29,14 @@ const FirstName = () => {
     return names.map((x, i) => {
       return (
         <div key={i}>
-          <button onClick={() => setNames([...names.slice(0, i), ...names.slice(i + 1, names.length)])}>x</button>
-          {x.name} | {x.type}
+          <button onClick={() => setNames([...names.slice(0, i), ...names.slice(i + 1, names.length)])}><span>X</span></button>
+          {x.name}, {x.type}
         </div>
       )
     })
   }
 
-  //TODO: make fun animated select element
+  // TODO: make fun animated select, also avoids the firefox select option font bug
 
   return (
     <motion.div id='first-name' variants={variants} animate='enter' exit='exit' initial='initial'>
@@ -57,7 +57,7 @@ const FirstName = () => {
       </form>
       <motion.div id='names' variants={itemVariants} key='names-list'>{mapNames()}</motion.div>
       <motion.div variants={itemVariants} key='next-btn'>
-        <Link to={'/lastname'}>Next</Link>
+        <Button to={'/lastname'} variant='square'>Next</Button>
       </motion.div>
     </motion.div>
   )

@@ -23,6 +23,7 @@
 }
 
 [data-theme='goth'] {
+  /* --white: black; */
   --lightblue: black;
   --pink: black;
   --soft-grey: white;
