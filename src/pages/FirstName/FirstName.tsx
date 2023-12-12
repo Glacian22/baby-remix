@@ -30,7 +30,7 @@ const FirstName = () => {
       return (
         <div key={i}>
           <button onClick={() => setNames([...names.slice(0, i), ...names.slice(i + 1, names.length)])}><span>X</span></button>
-          {x.name}, {x.type}
+          {x.name}, {x.type} 
         </div>
       )
     })
