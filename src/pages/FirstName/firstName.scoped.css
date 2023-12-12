@@ -2,18 +2,19 @@
   transition: inherit;
 }
 
-#first-name > form {
-  margin-top: 5rem;
+#first-name>form {
+  /* margin-top: 5rem; */
   display: flex;
   /* align-items: baseline; */
   flex-direction: column;
 }
 
-#first-name > form > * {
+#first-name>form>* {
   margin-bottom: 1rem;
 }
 
-#first-name input,select {
+#first-name input,
+select {
   border-radius: var(--border-rad);
   border: none;
   padding: .25rem .5rem;
@@ -24,7 +25,7 @@
 
 
 
-#first-name > form > button {
+#first-name>form>button {
   align-self: center;
 }
 
@@ -57,14 +58,26 @@
   border-radius: 50%;
   border: none;
   display: inline-flex;
-  justify-content: center; 
+  justify-content: center;
 }
 
-#names button > span {
+#names button>span {
   align-self: center;
   font-size: smaller;
 }
 
-#first-name button {
-  margin-top: .25rem
+#next {
+  margin-top: 1rem
+}
+
+#add {
+  border: 2px solid var(--pink);
+  text-decoration: none;
+  -webkit-text-stroke: 0;
+  border-radius: var(--border-rad);
+  background-color: var(--white);
+  color: var(--pink);
+  padding: .25rem;
+  font-weight: bold;
+  transition: inherit;
 }

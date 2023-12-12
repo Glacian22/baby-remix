@@ -40,6 +40,9 @@ const FirstName = () => {
 
   return (
     <motion.div id='first-name' variants={variants} animate='enter' exit='exit' initial='initial'>
+      <motion.div variants={itemVariants} key='next-btn' id='next'>
+        <Button to={''} variant='square'>Back</Button>
+      </motion.div>
       <form>
         <motion.div variants={itemVariants} key='fname'>
           <label htmlFor='fname-input' className='label'>name</label>
@@ -53,11 +56,11 @@ const FirstName = () => {
             <motion.option value='either' key='either' variants={selectItemVariants}>either</motion.option>
           </motion.select>
         </motion.div>
-        <motion.button type='submit' onClick={acceptHandler} variants={itemVariants} key='fname-accept'>add that name!</motion.button>
+        <motion.button type='submit' onClick={acceptHandler} variants={itemVariants} key='fname-accept' id='add'>add that name!</motion.button>
       </form>
       <motion.div id='names' variants={itemVariants} key='names-list'>{mapNames()}</motion.div>
-      <motion.div variants={itemVariants} key='next-btn'>
-        <Button to={'/lastname'} variant='square'>Next</Button>
+      <motion.div variants={itemVariants} key='next-btn' id='next'>
+        <Button to={'lastname'} variant='square'>Next</Button>
       </motion.div>
     </motion.div>
   )
