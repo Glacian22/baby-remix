@@ -1,5 +1,8 @@
 #first-name {
   transition: inherit;
+  display: grid;
+  grid-template-rows: 1fr auto 4fr 1fr;
+  /* align-items: center; */
 }
 
 #first-name>form {
@@ -37,6 +40,8 @@ select {
   color: black;
   -webkit-text-stroke: 0;
   font-weight: 600;
+  margin-top: 1rem;
+  overflow: scroll;
 }
 
 #names:hover,
@@ -66,12 +71,8 @@ select {
   font-size: smaller;
 }
 
-#next {
-  margin-top: 1rem
-}
-
 #add {
-  border: 2px solid var(--pink);
+  border: 6px solid var(--pink);
   text-decoration: none;
   -webkit-text-stroke: 0;
   border-radius: var(--border-rad);
@@ -80,4 +81,12 @@ select {
   padding: .25rem;
   font-weight: bold;
   transition: inherit;
+}
+
+#next, #back {
+  margin-top: 2rem
+}
+
+#next {
+  justify-self: end;
 }

@@ -40,7 +40,7 @@ const FirstName = () => {
 
   return (
     <motion.div id='first-name' variants={variants} animate='enter' exit='exit' initial='initial'>
-      <motion.div variants={itemVariants} key='next-btn' id='next'>
+      <motion.div variants={itemVariants} key='next-btn' id='back'>
         <Button to={''} variant='square'>Back</Button>
       </motion.div>
       <form>
