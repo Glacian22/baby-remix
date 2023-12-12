@@ -13,12 +13,45 @@ export const variants = {
 }
 
 export const itemVariants = {
+  initial: {
+    y: 500,
+    opacity: 0
+  },
   enter: {
-    y: [2000, 0],
-    transition: { type: "spring", stiffness: 600, damping: 40},
+    y: [500, 0],
+    opacity: 1,
+    transition: { type: "spring", stiffness: 500, damping: 35},
   },
   exit: {
-    y: [0, 2000],
-    transition: { type: "spring", stiffness: 600, damping: 40 }
+    y: [0, 500],
+    opacity: 0,
+    transition: { type: "spring", stiffness: 500, damping: 35 }
   }
 }
+
+export const selectVariants = {
+  initial: {
+    transition: {
+      staggerChildren: 0.1
+    }
+  },
+  open: {
+    transition: {
+      staggerChildren: 0.1
+    }
+  }
+}
+
+export const selectItemVariants = {
+  initial: {
+    opacity: 0,
+  },
+  open: {
+    opacity: .5,
+    transition: { duration: .5},
+  },
+}
+
+
+
+
