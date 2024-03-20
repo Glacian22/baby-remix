@@ -2,13 +2,10 @@
   transition: inherit;
   display: grid;
   grid-template-rows: 1fr auto 4fr 1fr;
-  /* align-items: center; */
 }
 
 #first-name>form {
-  /* margin-top: 5rem; */
   display: flex;
-  /* align-items: baseline; */
   flex-direction: column;
 }
 
@@ -44,15 +41,9 @@ select {
   overflow: scroll;
 }
 
-#names:hover,
-#names:active,
-#names:focus {
-  overflow: scroll;
-}
-
-/* #names::-webkit-scrollbar {
+#names::-webkit-scrollbar {
   display: none;
-}  */
+} 
 
 #names button {
   margin: .25rem;
