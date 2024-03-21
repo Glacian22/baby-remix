@@ -26,7 +26,17 @@ function App() {
 }
 
 export default withLDProvider({
-  clientSideID: '65933e77a9d90b0ffc2b39cc',
+  clientSideID: '65d4351a4ab156101d38e031',
+  context: {
+    kind: "user",
+    anonymous: true,
+    screenWidth: window.innerWidth
+  },
+  flags: {
+    "welcome-text": "Welcome to the baby name mixer!",
+    "enableUiTheme": false,
+    "enable-darkest-mode": false
+  },
   options: {
     bootstrap: 'localStorage'
   }
