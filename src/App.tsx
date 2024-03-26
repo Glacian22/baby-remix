@@ -1,15 +1,39 @@
 import { BrowserRouter as Router } from "react-router-dom";
+import { useState, useEffect } from "react";
+import { useDebounce } from 'use-debounce';
 import Navbar from "./components/Navbar";
 import Routes from "./Routes";
 import { themeAtom } from "./lib/atom";
 import { useAtom } from "jotai"
-import { withLDProvider } from "launchdarkly-react-client-sdk";
+import { withLDProvider, useLDClient } from "launchdarkly-react-client-sdk";
 import './App.scoped.css'
 import './App.global.css'
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 function App() {
   const [theme] = useAtom(themeAtom)
+  const [width, setWidth] = useState(window.innerWidth);
+  const [dWidth] = useDebounce(width, 100);
+  const ldClient = useLDClient();
+
+  useEffect(() => {
+    console.log('window width change')
+
+    const handleResize = () => {
+      setWidth(window.innerWidth);
+    };
+    window.addEventListener('resize', handleResize);
+    
+    ldClient?.identify({
+      kind: "user",
+      anonymous: true,
+      screenWidth: width
+    });
+
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, [dWidth])
 
   return (
     <div className="app-global" data-theme={theme}>
