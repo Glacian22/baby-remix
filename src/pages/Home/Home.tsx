@@ -13,7 +13,7 @@ const Home = () => {
       <motion.div key='explainer' variants={itemVariants}>
         {welcomeText}
       </motion.div>
-      <motion.div key='go' variants={itemVariants}>
+      <motion.div key='go' id='welcome-go-btn' variants={itemVariants}>
         <Button to='FirstName'>GO!</Button >
       </motion.div>
     </motion.div>
