@@ -62,6 +62,9 @@ export default withLDProvider({
     "enable-darkest-mode": false
   },
   options: {
-    bootstrap: 'localStorage'
+    bootstrap: 'localStorage',
+    streamUrl: '192.168.4.51:8030',
+    baseUrl:'192.168.4.51:8030',
+    eventsUrl:'192.168.4.51:8030',
   }
 })(App)
