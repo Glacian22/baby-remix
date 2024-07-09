@@ -4,6 +4,7 @@ import { motion } from 'framer-motion'
 import { lastNamesAtom } from '../../lib/atom'
 import { variants, itemVariants } from '../../lib/anims'
 import { useAtom } from 'jotai'
+import "../firstLastName.scoped.css"
 
 
 const LastName = () => {
@@ -45,7 +46,7 @@ const LastName = () => {
           <span className='label'>last name</span>
           <input type='text' name='name' value={lName} onChange={inputHandler}></input>
         </motion.div>
-        <motion.button type='submit' onClick={acceptHandler} variants={itemVariants} key='fname-accept' id='add'>add that name!</motion.button>
+        <motion.button type='submit' onClick={acceptHandler} variants={itemVariants} key='fname-accept' className='add'>add that name!</motion.button>
       </form>
       <motion.div variants={itemVariants} key='lName' id='names'>{mapNames()}</motion.div>
       <motion.div variants={itemVariants} key='next-btn' id='next'>

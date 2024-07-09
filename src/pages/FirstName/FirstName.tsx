@@ -5,7 +5,7 @@ import { useAtom } from 'jotai'
 import { firstNamesAtom } from '../../lib/atom';
 import { IName } from '../../lib/atom'
 import { variants, itemVariants, selectVariants, selectItemVariants } from '../../lib/anims'
-import './firstName.scoped.css'
+import '../firstLastName.scoped.css'
 
 const FirstName = () => {
   const [names, setNames] = useAtom(firstNamesAtom)
@@ -56,7 +56,7 @@ const FirstName = () => {
             <motion.option value='either' key='either' variants={selectItemVariants}>either</motion.option>
           </motion.select>
         </motion.div>
-        <motion.button type='submit' onClick={acceptHandler} variants={itemVariants} key='fname-accept' id='add'>add that name!</motion.button>
+        <motion.button type='submit' onClick={acceptHandler} variants={itemVariants} key='fname-accept' className='add'>add that name!</motion.button>
       </form>
       <motion.div id='names' variants={itemVariants} key='names-list'>{mapNames()}</motion.div>
       <motion.div variants={itemVariants} key='next-btn' id='next'>
