@@ -39,7 +39,7 @@ const FirstName = () => {
   // TODO: make fun animated select, also avoids the firefox select option font bug
 
   return (
-    <motion.div id='first-name' variants={variants} animate='enter' exit='exit' initial='initial'>
+    <motion.div className='add-name-page' variants={variants} animate='enter' exit='exit' initial='initial'>
       <motion.div variants={itemVariants} key='next-btn' id='back'>
         <Button to={''} variant='square'>Back</Button>
       </motion.div>
@@ -58,7 +58,7 @@ const FirstName = () => {
         </motion.div>
         <motion.button type='submit' onClick={acceptHandler} variants={itemVariants} key='fname-accept' className='add'>add that name!</motion.button>
       </form>
-      <motion.div id='names' variants={itemVariants} key='names-list'>{mapNames()}</motion.div>
+      <motion.div className='names' variants={itemVariants} key='names-list'>{mapNames()}</motion.div>
       <motion.div variants={itemVariants} key='next-btn' id='next'>
         <Button to={'lastname'} variant='square'>Next</Button>
       </motion.div>

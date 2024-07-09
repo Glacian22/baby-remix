@@ -1,19 +1,19 @@
-#first-name {
+.add-name-page {
   transition: inherit;
   display: grid;
   grid-template-rows: 1fr auto 4fr 1fr;
 }
 
-#first-name>form {
+.add-name-page >form {
   display: flex;
   flex-direction: column;
 }
 
-#first-name>form>* {
+.add-name-page>form>* {
   margin-bottom: 1rem;
 }
 
-#first-name input,
+.add-name-page input,
 select {
   border-radius: var(--border-rad);
   border: none;
@@ -25,11 +25,11 @@ select {
 
 
 
-#first-name>form>button {
+/* .add-name-page>form>button {
   align-self: center;
-}
+} */
 
-#names {
+.names {
   background-color: var(--white);
   min-height: 40px;
   width: 100%;
@@ -45,7 +45,7 @@ select {
   display: none;
 } 
 
-#names button {
+.names button {
   margin: .25rem;
   color: var(--white);
   background-color: var(--pink);
@@ -57,7 +57,7 @@ select {
   justify-content: center;
 }
 
-#names button>span {
+.names button>span {
   align-self: center;
   font-size: smaller;
 }

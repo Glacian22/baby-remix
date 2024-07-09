@@ -29,7 +29,7 @@ const LastName = () => {
     return names.map((n, i) => {
       return (
         <div key={i}>
-          <button onClick={() => setNames([...names.slice(0, i), ...names.slice(i + 1, names.length)])}>X</button>
+          <button onClick={() => setNames([...names.slice(0, i), ...names.slice(i + 1, names.length)])}><span>X</span></button>
           {n}
         </div>
       )
@@ -37,7 +37,7 @@ const LastName = () => {
   }
 
   return (
-    <motion.div id='last-name' variants={variants} animate='enter' exit='exit' initial='initial'>
+    <motion.div className='add-name-page' variants={variants} animate='enter' exit='exit' initial='initial'>
       <motion.div variants={itemVariants} key='next-btn' id='back'>
         <Button to={'firstname'} variant='square'>Back</Button>
       </motion.div>
@@ -46,9 +46,9 @@ const LastName = () => {
           <span className='label'>last name</span>
           <input type='text' name='name' value={lName} onChange={inputHandler}></input>
         </motion.div>
-        <motion.button type='submit' onClick={acceptHandler} variants={itemVariants} key='fname-accept' className='add'>add that name!</motion.button>
+        <motion.button type='submit' onClick={acceptHandler} variants={itemVariants} key='lname-accept' className='add'>add that name!</motion.button>
       </form>
-      <motion.div variants={itemVariants} key='lName' id='names'>{mapNames()}</motion.div>
+      <motion.div variants={itemVariants} key='lName' className='names'>{mapNames()}</motion.div>
       <motion.div variants={itemVariants} key='next-btn' id='next'>
         <Button to={'lastname'} variant='square'>Next</Button>
       </motion.div>
