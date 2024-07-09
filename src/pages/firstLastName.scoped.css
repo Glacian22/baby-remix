@@ -1,0 +1,83 @@
+#first-name {
+  transition: inherit;
+  display: grid;
+  grid-template-rows: 1fr auto 4fr 1fr;
+}
+
+#first-name>form {
+  display: flex;
+  flex-direction: column;
+}
+
+#first-name>form>* {
+  margin-bottom: 1rem;
+}
+
+#first-name input,
+select {
+  border-radius: var(--border-rad);
+  border: none;
+  padding: .25rem .5rem;
+  margin-left: .5rem;
+  margin-bottom: .5rem;
+  background-color: var(--white)
+}
+
+
+
+#first-name>form>button {
+  align-self: center;
+}
+
+#names {
+  background-color: var(--white);
+  min-height: 40px;
+  width: 100%;
+  border-radius: var(--border-rad);
+  color: black;
+  -webkit-text-stroke: 0;
+  font-weight: 600;
+  margin-top: 1rem;
+  overflow: scroll;
+}
+
+#names::-webkit-scrollbar {
+  display: none;
+} 
+
+#names button {
+  margin: .25rem;
+  color: var(--white);
+  background-color: var(--pink);
+  height: 2rem;
+  width: 2rem;
+  border-radius: 50%;
+  border: none;
+  display: inline-flex;
+  justify-content: center;
+}
+
+#names button>span {
+  align-self: center;
+  font-size: smaller;
+}
+
+.add {
+  border: 6px solid var(--pink);
+  text-decoration: none;
+  -webkit-text-stroke: 0;
+  border-radius: var(--border-rad);
+  background-color: var(--white);
+  color: var(--pink);
+  padding: .25rem;
+  font-weight: bold;
+  transition: inherit;
+}
+
+#next, #back {
+  margin-top: 2rem
+}
+
+#next {
+  justify-self: end;
+}

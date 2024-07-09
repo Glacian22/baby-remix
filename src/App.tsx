@@ -17,8 +17,6 @@ function App() {
   const ldClient = useLDClient();
 
   useEffect(() => {
-    console.log('window width change')
-
     const handleResize = () => {
       setWidth(window.innerWidth);
     };
@@ -62,6 +60,9 @@ export default withLDProvider({
     "enable-darkest-mode": false
   },
   options: {
-    bootstrap: 'localStorage'
+    bootstrap: 'localStorage',
+    // streamUrl: 'https://127.0.0.1:8030',
+    // baseUrl: 'https://127.0.0.1:8030',
+    // eventsUrl: 'https://127.0.0.1:8030'
   }
 })(App)
