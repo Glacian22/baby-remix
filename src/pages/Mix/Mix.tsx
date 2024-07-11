@@ -1,7 +1,7 @@
 import { useState } from "react"
 import Button from '../../components/Button'
 import { motion } from 'framer-motion'
-import { variants, itemVariants } from '../../lib/anims'
+import { variants, itemVariants, listVariants } from '../../lib/anims'
 import { firstNamesAtom, lastNamesAtom, mixedNamesAtom } from "../../lib/atom"
 import { useAtom } from 'jotai'
 import Settings from "./Settings"
@@ -66,6 +66,14 @@ const Mix = () => {
     return firstNames.filter(x => x.type === 'middle' || x.type === 'either').length
   }
 
+  const mapMixedNames = () => {
+    const reversed = [...mixedNames].reverse()
+    return reversed.map((name, i) => 
+      <motion.div key={i} variants={listVariants}>{name}
+      </motion.div>
+    )
+  }
+
   return (
     <motion.div className='mix-page' variants={variants} animate='enter' exit='exit' initial='initial'>
       <motion.div variants={itemVariants} key='next-btn' id='back'>
@@ -81,10 +89,10 @@ const Mix = () => {
         <Button variant='square' nav={false} onClick={mixName}>MIX</Button>
         <Button variant='square' nav={false} onClick={toggleModal}>settings</Button>
       </motion.div>
-      <motion.div className='names' variants={itemVariants}>{mixedNames.map((name) => <div>{name}</div>)}</motion.div>
-      <Settings show={showModal} toggleModal={toggleModal} middle={numMiddle} setMiddle={setNumMiddle} showLast={showLast} toggleLast={toggleLast} maxMiddle={maxMiddle()} />
-      <motion.div variants={itemVariants}>
+      <motion.div className='names' variants={itemVariants}>
+        {mapMixedNames()}
       </motion.div>
+      <Settings show={showModal} toggleModal={toggleModal} middle={numMiddle} setMiddle={setNumMiddle} showLast={showLast} toggleLast={toggleLast} maxMiddle={maxMiddle()} />
     </motion.div>
   )
 }

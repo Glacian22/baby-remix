@@ -11,6 +11,10 @@
   grid-template-rows: 1fr 1fr 1fr 1fr 5fr;
 }
 
+.mix-page .names > * {
+  margin: auto .25rem
+}
+
 .add-name-page >form {
   display: flex;
   flex-direction: column;
