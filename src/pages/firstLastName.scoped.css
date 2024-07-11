@@ -1,7 +1,14 @@
 .add-name-page {
+  width: 100%;
   transition: inherit;
   display: grid;
   grid-template-rows: 1fr auto 4fr 1fr;
+}
+
+.mix-page {
+  transition: inherit;
+  display: grid;
+  grid-template-rows: 1fr 1fr 1fr 1fr 5fr;
 }
 
 .add-name-page >form {
@@ -25,9 +32,9 @@ select {
 
 
 
-/* .add-name-page>form>button {
+.add-name-page>form>button {
   align-self: center;
-} */
+}
 
 .names {
   background-color: var(--white);
@@ -41,7 +48,7 @@ select {
   overflow: scroll;
 }
 
-#names::-webkit-scrollbar {
+.names::-webkit-scrollbar {
   display: none;
 } 
 

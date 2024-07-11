@@ -4,7 +4,7 @@ import { motion } from 'framer-motion'
 import { useAtom } from 'jotai'
 import { firstNamesAtom } from '../../lib/atom';
 import { IName } from '../../lib/atom'
-import { variants, itemVariants, selectVariants, selectItemVariants } from '../../lib/anims'
+import { variants, itemVariants, selectVariants, selectItemVariants, listVariants} from '../../lib/anims'
 import '../firstLastName.scoped.css'
 
 const FirstName = () => {
@@ -17,6 +17,7 @@ const FirstName = () => {
     if (trimmed.length === 0) {
       return
     }
+    
     setNames([{ name: trimmed, type: form.type }, ...names])
     setForm({ ...form, name: '' })
   }
@@ -28,10 +29,10 @@ const FirstName = () => {
   const mapNames = () => {
     return names.map((x, i) => {
       return (
-        <div key={i}>
+        <motion.div key={i} variants={listVariants}>
           <button onClick={() => setNames([...names.slice(0, i), ...names.slice(i + 1, names.length)])}><span>X</span></button>
           {x.name}, {x.type} 
-        </div>
+        </motion.div>
       )
     })
   }

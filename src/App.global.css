@@ -3,15 +3,15 @@
   color: var(--white);
   font-size: var(--font-med);
   font-weight: 800;
-  /* -webkit-text-stroke: var(--stroke-width) var(--soft-grey); misbehaves on chrome */
   transition-property: background-color, color, -webkit-text-stroke;
   transition-duration: .75s;
 }
 
 #content-wrap {
+  width: 100%;
   max-width: 1024px;
   display: flex;
-  margin: 0 auto;
+  /* margin: 0 auto; */
   overflow-y: hidden;
 }
 

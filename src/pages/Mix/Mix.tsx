@@ -1,17 +1,19 @@
 import { useState } from "react"
-import { Link } from "react-router-dom"
-import { firstNamesAtom, lastNamesAtom } from "../../lib/atom"
+import Button from '../../components/Button'
+import { motion } from 'framer-motion'
+import { variants, itemVariants } from '../../lib/anims'
+import { firstNamesAtom, lastNamesAtom, mixedNamesAtom } from "../../lib/atom"
 import { useAtom } from 'jotai'
 import Settings from "./Settings"
+import '../firstLastName.scoped.css'
 
 // TODO: guard against no names entered
 const Mix = () => {
 
   const [firstNames] = useAtom(firstNamesAtom)
   const [lastNames] = useAtom(lastNamesAtom)
-
+  const [mixedNames, setMixedNames] = useAtom(mixedNamesAtom)
   const [currentName, setCurrentName] = useState('')
-  const [namesList, setNamesList] = useState<string[]>([])
   const [showModal, setShowModal] = useState(false)
   const [numMiddle, setNumMiddle] = useState(1)
   const [showLast, setShowLast] = useState(true)
@@ -43,8 +45,8 @@ const Mix = () => {
     setCurrentName(tempName)
 
     // add name to list, unless it already exists
-    if (namesList.indexOf(tempName) === -1) {
-      setNamesList([...namesList, tempName])
+    if (mixedNames.indexOf(tempName) === -1) {
+      setMixedNames([...mixedNames, tempName])
     }
   }
 
@@ -65,19 +67,25 @@ const Mix = () => {
   }
 
   return (
-    <div>
-      <Link to='/lastname'>back</Link>
-      <span>Now let's mix up some baby names and see how they sound!</span>
-      <div>
+    <motion.div className='mix-page' variants={variants} animate='enter' exit='exit' initial='initial'>
+      <motion.div variants={itemVariants} key='next-btn' id='back'>
+        <Button to={'lastname'} variant='square'>Back</Button>
+      </motion.div>
+      <motion.div variants={itemVariants} key='mixText'>Now let's mix up some baby names and see how they sound!</motion.div>
+      <motion.div variants={itemVariants} key='currentName'>
         <strong>
           {currentName}
         </strong>
-      </div>
-      <button onClick={mixName}>MIX</button>
-      <button onClick={toggleModal}>settings</button>
-      <div>{namesList.map((name) => <div>{name}</div>)}</div>
-      <Settings show={showModal} toggleModal={toggleModal} middle={numMiddle} setMiddle={setNumMiddle} showLast={showLast} toggleLast={toggleLast} maxMiddle={maxMiddle()}/>
-    </div>
+      </motion.div>
+      <motion.div variants={itemVariants} key='mix+settings'>
+        <Button variant='square' nav={false} onClick={mixName}>MIX</Button>
+        <Button variant='square' nav={false} onClick={toggleModal}>settings</Button>
+      </motion.div>
+      <motion.div className='names' variants={itemVariants}>{mixedNames.map((name) => <div>{name}</div>)}</motion.div>
+      <Settings show={showModal} toggleModal={toggleModal} middle={numMiddle} setMiddle={setNumMiddle} showLast={showLast} toggleLast={toggleLast} maxMiddle={maxMiddle()} />
+      <motion.div variants={itemVariants}>
+      </motion.div>
+    </motion.div>
   )
 }
 
