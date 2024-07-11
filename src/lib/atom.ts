@@ -8,6 +8,7 @@ export interface IName {
 
 export const firstNamesAtom = atom<IName[]>([])
 export const lastNamesAtom = atom<string[]>([])
+export const mixedNamesAtom = atom<string[]>([])
 
 const defaultDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
 let theme = defaultDark ? 'dark' : 'light'

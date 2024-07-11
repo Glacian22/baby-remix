@@ -4,8 +4,8 @@ import { motion } from 'framer-motion'
 import { useAtom } from 'jotai'
 import { firstNamesAtom } from '../../lib/atom';
 import { IName } from '../../lib/atom'
-import { variants, itemVariants, selectVariants, selectItemVariants } from '../../lib/anims'
-import './firstName.scoped.css'
+import { variants, itemVariants, selectVariants, selectItemVariants, listVariants} from '../../lib/anims'
+import '../firstLastName.scoped.css'
 
 const FirstName = () => {
   const [names, setNames] = useAtom(firstNamesAtom)
@@ -17,6 +17,7 @@ const FirstName = () => {
     if (trimmed.length === 0) {
       return
     }
+    
     setNames([{ name: trimmed, type: form.type }, ...names])
     setForm({ ...form, name: '' })
   }
@@ -28,10 +29,10 @@ const FirstName = () => {
   const mapNames = () => {
     return names.map((x, i) => {
       return (
-        <div key={i}>
+        <motion.div key={i} variants={listVariants}>
           <button onClick={() => setNames([...names.slice(0, i), ...names.slice(i + 1, names.length)])}><span>X</span></button>
           {x.name}, {x.type} 
-        </div>
+        </motion.div>
       )
     })
   }
@@ -39,7 +40,7 @@ const FirstName = () => {
   // TODO: make fun animated select, also avoids the firefox select option font bug
 
   return (
-    <motion.div id='first-name' variants={variants} animate='enter' exit='exit' initial='initial'>
+    <motion.div className='add-name-page' variants={variants} animate='enter' exit='exit' initial='initial'>
       <motion.div variants={itemVariants} key='next-btn' id='back'>
         <Button to={''} variant='square'>Back</Button>
       </motion.div>
@@ -56,9 +57,9 @@ const FirstName = () => {
             <motion.option value='either' key='either' variants={selectItemVariants}>either</motion.option>
           </motion.select>
         </motion.div>
-        <motion.button type='submit' onClick={acceptHandler} variants={itemVariants} key='fname-accept' id='add'>add that name!</motion.button>
+        <motion.button type='submit' onClick={acceptHandler} variants={itemVariants} key='fname-accept' className='add'>add that name!</motion.button>
       </form>
-      <motion.div id='names' variants={itemVariants} key='names-list'>{mapNames()}</motion.div>
+      <motion.div className='names' variants={itemVariants} key='names-list'>{mapNames()}</motion.div>
       <motion.div variants={itemVariants} key='next-btn' id='next'>
         <Button to={'lastname'} variant='square'>Next</Button>
       </motion.div>

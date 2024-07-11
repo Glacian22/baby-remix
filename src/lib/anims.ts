@@ -29,6 +29,20 @@ export const itemVariants = {
   }
 }
 
+export const listVariants = {
+  initial: {
+    opacity: 0,
+  },
+  enter: {
+    opacity: 1,
+    transition: {duration: .25}
+  },
+  exit: {
+    opacity: 0,
+    transition: {duration: .25}
+  }
+}
+
 export const selectVariants = {
   initial: {
     transition: {
