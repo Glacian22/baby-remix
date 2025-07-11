@@ -1,0 +1,80 @@
+.settings-modal .modal-content {
+  background-color: var(--lightblue);
+  color: var(--white);
+  border: 2px solid var(--white);
+  border-radius: var(--border-rad);
+  transition: inherit;
+}
+
+.settings-modal .modal-header[data-theme] {
+  border-bottom: 2px solid var(--white);
+  background-color: var(--pink);
+  color: var(--white);
+  font-weight: bold;
+  border-radius: var(--border-rad) var(--border-rad) 0 0;
+}
+
+.settings-modal .modal-body[data-theme] {
+  background-color: var(--lightblue);
+  color: var(--white);
+}
+
+.settings-modal .modal-header .btn-close {
+  filter: invert(1);
+  opacity: 0.8;
+}
+
+.settings-modal .modal-header .btn-close:hover {
+  opacity: 1;
+}
+
+.settings-modal .modal-body {
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.settings-modal .setting-group {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.settings-modal .setting-group span {
+  font-weight: bold;
+  flex: 1;
+}
+
+.settings-modal .setting-group input[type="number"] {
+  border: 2px solid var(--white);
+  border-radius: var(--border-rad);
+  background-color: var(--white);
+  color: var(--lightblue);
+  padding: 0.5rem;
+  font-weight: bold;
+  width: 4rem;
+  text-align: center;
+}
+
+.settings-modal .setting-group input[type="number"]:focus {
+  outline: none;
+  border-color: var(--pink);
+}
+
+.settings-modal .toggle-button {
+  border: 2px solid var(--white);
+  border-radius: var(--border-rad);
+  background-color: var(--pink);
+  color: var(--white);
+  padding: 0.5rem 1rem;
+  font-weight: bold;
+  transition: inherit;
+  cursor: pointer;
+}
+
+.settings-modal .toggle-button:hover {
+  background-color: var(--white);
+  color: var(--pink);
+} 
