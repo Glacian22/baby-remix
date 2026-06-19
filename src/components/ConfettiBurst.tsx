@@ -28,8 +28,8 @@ const RIBBONS: Ribbon[] = [
 // A gently squiggly stroke from x=0 to x=len, centered vertically in a 12-tall box.
 const makeSquiggle = (len: number): string => {
   const mid = 6
-  const amp = 4
-  const humps = Math.max(2, Math.round(len / 6))
+  const amp = 3.5
+  const humps = Math.max(2, Math.round(len / 11))
   const seg = len / humps
   let d = `M0 ${mid}`
   for (let i = 0; i < humps; i++) {
@@ -57,13 +57,13 @@ const ConfettiBurst = () => {
                 strokeWidth={2.5}
                 strokeLinecap='round'
                 initial={{ pathLength: 0, pathOffset: 0, opacity: 1 }}
-                // draw outward (0 → 0.45), then erase from the near end (0.45 → 0.95):
-                // pathOffset rises while pathLength shrinks, so the start point recedes
-                // outward while the far end stays put. Final opacity step clears the cap.
+                // draw outward (0 → 0.45), then erase from the near end while fading
+                // (0.45 → 0.95): pathOffset rises and pathLength shrinks so the start
+                // point recedes outward while the far end stays put, and opacity falls.
                 animate={{
                   pathLength: [0, 1, 0, 0],
                   pathOffset: [0, 0, 1, 1],
-                  opacity: [1, 1, 1, 0],
+                  opacity: [1, 1, 0, 0],
                 }}
                 transition={{ duration: 0.6, delay: r.delay, ease: [0.83, 0, 0.17, 1], times: [0, 0.45, 0.95, 1] }}
               />
