@@ -74,6 +74,11 @@ select {
   margin-top: .25rem;
 }
 
+.current-name-wrap {
+  position: relative;
+  display: inline-block;
+}
+
 .names button {
   margin: .25rem;
   color: var(--white);

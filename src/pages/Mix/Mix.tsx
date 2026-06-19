@@ -1,6 +1,7 @@
 import { useState } from "react"
 import Button from '../../components/Button'
 import NameRow from '../../components/NameRow'
+import SparkleBurst from '../../components/SparkleBurst'
 import { motion } from 'framer-motion'
 import { variants, itemVariants } from '../../lib/anims'
 import { firstNamesAtom, lastNamesAtom, mixedNamesAtom, favoritesAtom, IName } from "../../lib/atom"
@@ -18,6 +19,7 @@ const Mix = () => {
   const [mixedNames, setMixedNames] = useAtom(mixedNamesAtom)
   const [favorites, setFavorites] = useAtom(favoritesAtom)
   const [currentName, setCurrentName] = useState('')
+  const [burstKey, setBurstKey] = useState(0)
   const [showModal, setShowModal] = useState(false)
   const [numMiddle, setNumMiddle] = useState(1)
   const [showLast, setShowLast] = useState(true)
@@ -61,6 +63,7 @@ const Mix = () => {
     }
 
     setCurrentName(tempName)
+    setBurstKey((k) => k + 1) // replay the sparkle burst on each successful mix
 
     // add name to list, unless it already exists
     if (mixedNames.indexOf(tempName) === -1) {
@@ -109,9 +112,12 @@ const Mix = () => {
       </motion.div>
       <motion.div variants={itemVariants} key='mixText'>Now let's mix up some baby names and see how they sound!</motion.div>
       <motion.div variants={itemVariants} key='currentName'>
-        <strong>
-          {currentName}
-        </strong>
+        <span className='current-name-wrap'>
+          <strong>
+            {currentName}
+          </strong>
+          {burstKey > 0 && <SparkleBurst key={burstKey} />}
+        </span>
         {currentName && isUnfortunateMonogram(currentName) &&
           <div className='monogram-note'>⚠ initials spell "{getInitials(currentName)}"</div>
         }
