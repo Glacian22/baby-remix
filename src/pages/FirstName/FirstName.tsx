@@ -44,10 +44,10 @@ const FirstName = () => {
       <motion.div variants={itemVariants} key='back-btn' id='back'>
         <Button to={''} variant='square'>Back</Button>
       </motion.div>
-      <form>
+      <form onSubmit={acceptHandler}>
         <motion.div variants={itemVariants} key='fname'>
           <label htmlFor='fname-input' className='label'>name</label>
-          <input id='fname-input' type='text' name='name' value={form.name} onChange={formHandler}></input>
+          <input id='fname-input' type='text' name='name' autoComplete='off' value={form.name} onChange={formHandler}></input>
         </motion.div>
         <motion.div variants={itemVariants} key='fname-select'>
           <label htmlFor='type' className='label'>can be</label>
@@ -57,7 +57,7 @@ const FirstName = () => {
             <motion.option value='either' key='either' variants={selectItemVariants}>either</motion.option>
           </motion.select>
         </motion.div>
-        <motion.button type='submit' onClick={acceptHandler} variants={itemVariants} key='fname-accept' className='add'>add that name!</motion.button>
+        <motion.button type='submit' variants={itemVariants} key='fname-accept' className='add'>add that name!</motion.button>
       </form>
       <motion.div className='names' variants={itemVariants} key='names-list'>{mapNames()}</motion.div>
       <motion.div variants={itemVariants} key='next-btn' id='next'>

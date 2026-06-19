@@ -45,12 +45,12 @@ const LastName = () => {
       <motion.div variants={itemVariants} key='back-btn' id='back'>
         <Button to={'firstname'} variant='square'>Back</Button>
       </motion.div>
-      <form>
+      <form onSubmit={acceptHandler}>
         <motion.div variants={itemVariants} key='lNameForm'>
           <span className='label'>last name</span>
-          <input type='text' name='name' value={lName} onChange={inputHandler}></input>
+          <input type='text' name='name' autoComplete='off' value={lName} onChange={inputHandler}></input>
         </motion.div>
-        <motion.button type='submit' onClick={acceptHandler} variants={itemVariants} key='lname-accept' className='add'>add that name!</motion.button>
+        <motion.button type='submit' variants={itemVariants} key='lname-accept' className='add'>add that name!</motion.button>
       </form>
       <motion.div variants={itemVariants} key='lName' className='names'>{mapNames()}</motion.div>
       <motion.div variants={itemVariants} key='next-btn' id='next'>
