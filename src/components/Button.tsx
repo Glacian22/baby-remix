@@ -1,11 +1,12 @@
+import { ReactNode } from 'react';
 import { Link } from 'react-router-dom';
 import "./button.scoped.css"
 
 interface buttonProps extends React.ButtonHTMLAttributes<HTMLButtonElement>{
-  to?: String;
+  to?: string;
   variant?: 'square' | 'round';
-  nav?: Boolean;
-  children?: String;
+  nav?: boolean;
+  children?: ReactNode;
 }
 
 const Button = ({to, variant, nav=true, children, ...rest}: buttonProps) => {

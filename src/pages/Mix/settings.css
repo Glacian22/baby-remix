@@ -1,22 +1,21 @@
+/* Global (not scoped): react-bootstrap renders the modal in a portal at <body>,
+   so scoped data-attributes never reach .modal-content. The .settings-modal class
+   is applied via dialogClassName, and data-theme is set on the same element so the
+   theme variable overrides cascade into the modal. */
+
 .settings-modal .modal-content {
   background-color: var(--lightblue);
   color: var(--white);
   border: 2px solid var(--white);
   border-radius: var(--border-rad);
-  transition: inherit;
 }
 
-.settings-modal .modal-header[data-theme] {
+.settings-modal .modal-header {
   border-bottom: 2px solid var(--white);
   background-color: var(--pink);
   color: var(--white);
   font-weight: bold;
   border-radius: var(--border-rad) var(--border-rad) 0 0;
-}
-
-.settings-modal .modal-body[data-theme] {
-  background-color: var(--lightblue);
-  color: var(--white);
 }
 
 .settings-modal .modal-header .btn-close {
@@ -29,6 +28,8 @@
 }
 
 .settings-modal .modal-body {
+  background-color: var(--lightblue);
+  color: var(--white);
   padding: 1.5rem;
   display: flex;
   flex-direction: column;
@@ -70,11 +71,10 @@
   color: var(--white);
   padding: 0.5rem 1rem;
   font-weight: bold;
-  transition: inherit;
   cursor: pointer;
 }
 
 .settings-modal .toggle-button:hover {
   background-color: var(--white);
   color: var(--pink);
-} 
+}

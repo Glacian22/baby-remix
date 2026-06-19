@@ -1,27 +1,32 @@
-# React + TypeScript + Vite
+# Baby Remix
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A small single-page app for brainstorming baby names. Enter a pool of first/middle
+names and a last name, then "mix" them into random full-name combinations to hear how
+they sound together.
 
-Currently, two official plugins are available:
+## Flow
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+1. **Home** – intro screen (welcome text is driven by a LaunchDarkly flag).
+2. **First names** – add candidate names, each tagged as `first`, `middle`, or `either`.
+3. **Last name** – add one or more last names.
+4. **Mix** – generate random combinations. Settings control how many middle names to
+   include and whether to append the last name.
 
-## Expanding the ESLint configuration
+## Tech
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+- **React 18** + **TypeScript** + **Vite** (SWC)
+- **Jotai** for state (with `atomWithStorage` for the theme)
+- **framer-motion** for page/list transitions
+- **react-router-dom v5** for routing
+- **react-bootstrap** for the settings modal
+- **LaunchDarkly** for feature flags (welcome text, UI theme toggle, "darkest" mode)
+- Component-scoped CSS via `rollup-plugin-react-scoped-css`
 
-- Configure the top-level `parserOptions` property like this:
+## Scripts
 
-```js
-   parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-   },
+```bash
+npm run dev      # start the dev server
+npm run build    # type-check + production build
+npm run lint     # eslint (zero warnings allowed)
+npm run preview  # preview the production build
 ```
-
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
