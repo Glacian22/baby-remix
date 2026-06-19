@@ -13,7 +13,11 @@ const Root = withLDProvider({
   flags: {
     "welcome-text": "Welcome to the baby name mixer!",
     "enableUiTheme": false,
-    "enable-darkest-mode": false
+    "enable-darkest-mode": false,
+    // Monetization features. Defaulted on here so you can preview the placement;
+    // create these flags in LaunchDarkly (defaulting OFF) before a public launch.
+    "enable-email-capture": true,
+    "enable-keepsake-cta": true
   },
   options: {
     bootstrap: 'localStorage',

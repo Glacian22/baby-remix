@@ -1,7 +1,10 @@
 import { motion } from 'framer-motion'
 import { useAtom } from 'jotai'
+import { useFlags } from 'launchdarkly-react-client-sdk'
 import Button from '../../components/Button'
 import NameRow from '../../components/NameRow'
+import EmailCapture from '../../components/EmailCapture'
+import KeepsakeCta from '../../components/KeepsakeCta'
 import { favoritesAtom } from '../../lib/atom'
 import { variants, itemVariants } from '../../lib/anims'
 import { downloadTextFile } from '../../lib/io'
@@ -9,6 +12,7 @@ import '../firstLastName.scoped.css'
 
 const Favorites = () => {
   const [favorites, setFavorites] = useAtom(favoritesAtom)
+  const { enableEmailCapture, enableKeepsakeCta } = useFlags()
 
   const removeFavorite = (name: string) => {
     setFavorites(favorites.filter((n) => n !== name))
@@ -28,14 +32,19 @@ const Favorites = () => {
       <motion.div className='names' variants={itemVariants} key='fav-list'>
         {favorites.length === 0
           ? <div className='empty'>No favorites yet — tap the ♥ on a mix to save it here.</div>
-          : favorites.map((name) =>
-              <NameRow
-                key={name}
-                name={name}
-                isFavorite={true}
-                onToggleFavorite={removeFavorite}
-              />
-            )
+          : <>
+              {enableEmailCapture && <EmailCapture names={favorites} />}
+              {favorites.map((name) =>
+                <div className='favorite-item' key={name}>
+                  <NameRow
+                    name={name}
+                    isFavorite={true}
+                    onToggleFavorite={removeFavorite}
+                  />
+                  {enableKeepsakeCta && <KeepsakeCta name={name} />}
+                </div>
+              )}
+            </>
         }
       </motion.div>
       <motion.div variants={itemVariants} key='fav-export' id='next'>

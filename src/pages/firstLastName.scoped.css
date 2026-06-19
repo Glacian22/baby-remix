@@ -60,6 +60,14 @@ select {
   font-weight: 600;
 }
 
+.favorite-item {
+  border-bottom: 1px solid rgba(0, 0, 0, .08);
+}
+
+.favorite-item:last-child {
+  border-bottom: none;
+}
+
 .mix-page .monogram-note {
   font-size: var(--font-sm);
   font-weight: 600;
