@@ -1,20 +1,20 @@
-.sparkle-burst {
+.confetti-burst {
   position: absolute;
   inset: 0;
   pointer-events: none;
   overflow: visible;
-  color: var(--pink);
 }
 
-/* Static wrapper handles positioning + centering so it doesn't fight the
-   animated transform on the inner element. */
-.sparkle {
+/* Every ribbon starts at the name's center; the inner element flies outward. */
+.ribbon {
   position: absolute;
+  left: 50%;
+  top: 50%;
   transform: translate(-50%, -50%);
   line-height: 0;
 }
 
-.sparkle-anim {
+.ribbon-anim {
   display: inline-block;
   line-height: 0;
 }

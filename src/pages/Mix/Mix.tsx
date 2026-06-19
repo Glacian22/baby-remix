@@ -1,7 +1,7 @@
 import { useState } from "react"
 import Button from '../../components/Button'
 import NameRow from '../../components/NameRow'
-import SparkleBurst from '../../components/SparkleBurst'
+import ConfettiBurst from '../../components/ConfettiBurst'
 import { motion } from 'framer-motion'
 import { variants, itemVariants } from '../../lib/anims'
 import { firstNamesAtom, lastNamesAtom, mixedNamesAtom, favoritesAtom, IName } from "../../lib/atom"
@@ -116,7 +116,7 @@ const Mix = () => {
           <strong>
             {currentName}
           </strong>
-          {burstKey > 0 && <SparkleBurst key={burstKey} />}
+          {burstKey > 0 && <ConfettiBurst key={burstKey} />}
         </span>
         {currentName && isUnfortunateMonogram(currentName) &&
           <div className='monogram-note'>⚠ initials spell "{getInitials(currentName)}"</div>
