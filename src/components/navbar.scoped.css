@@ -13,6 +13,23 @@ nav > .app-width {
   transition: inherit
 }
 
+nav .nav-right {
+  display: flex;
+  align-items: center;
+  gap: .75rem;
+}
+
+#fav-link {
+  color: var(--white);
+  text-decoration: none;
+  font-weight: bold;
+  transition: inherit;
+}
+
+#fav-link:hover {
+  text-decoration: underline;
+}
+
 #theme-btn {
   border: 2px solid white;
   border-radius: var(--border-rad);

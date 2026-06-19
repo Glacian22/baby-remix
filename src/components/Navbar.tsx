@@ -1,5 +1,6 @@
 import { useEffect } from "react"
-import { themeAtom } from "../lib/atom"
+import { Link } from "react-router-dom"
+import { themeAtom, favoritesAtom } from "../lib/atom"
 import { useAtom } from "jotai"
 import { useFlags } from 'launchdarkly-react-client-sdk'
 import './navbar.scoped.css'
@@ -7,6 +8,7 @@ import './navbar.scoped.css'
 
 const Navbar = () => {
   const [theme, setTheme] = useAtom(themeAtom)
+  const [favorites] = useAtom(favoritesAtom)
   const { enableUiTheme, enableDarkestMode } = useFlags()
 
   // if not in light mode and theme button is disabled via flag, revert ui to light mode
@@ -32,10 +34,12 @@ const Navbar = () => {
     <nav>
       <div className='app-width'>
         <span>Baby Mix!</span>
-        {enableUiTheme &&
-
-          <button id='theme-btn' onClick={() => setTheme(nextTheme())}>{theme}</button>
-        }
+        <div className='nav-right'>
+          <Link id='fav-link' to='/favorites'>♥ {favorites.length}</Link>
+          {enableUiTheme &&
+            <button id='theme-btn' onClick={() => setTheme(nextTheme())}>{theme}</button>
+          }
+        </div>
       </div>
     </nav>
   )

@@ -1,9 +1,12 @@
 import { useState } from "react"
 import Button from '../../components/Button'
+import NameRow from '../../components/NameRow'
 import { motion } from 'framer-motion'
-import { variants, itemVariants, listVariants } from '../../lib/anims'
-import { firstNamesAtom, lastNamesAtom, mixedNamesAtom, IName } from "../../lib/atom"
+import { variants, itemVariants } from '../../lib/anims'
+import { firstNamesAtom, lastNamesAtom, mixedNamesAtom, favoritesAtom, IName } from "../../lib/atom"
 import { useAtom } from 'jotai'
+import { getInitials, isUnfortunateMonogram } from '../../lib/names'
+import { downloadTextFile } from '../../lib/io'
 import Settings from "./Settings"
 import '../firstLastName.scoped.css'
 
@@ -13,6 +16,7 @@ const Mix = () => {
   const [firstNames] = useAtom(firstNamesAtom)
   const [lastNames] = useAtom(lastNamesAtom)
   const [mixedNames, setMixedNames] = useAtom(mixedNamesAtom)
+  const [favorites, setFavorites] = useAtom(favoritesAtom)
   const [currentName, setCurrentName] = useState('')
   const [showModal, setShowModal] = useState(false)
   const [numMiddle, setNumMiddle] = useState(1)
@@ -21,6 +25,15 @@ const Mix = () => {
   const toggleModal = () => setShowModal(!showModal)
 
   const toggleLast = () => setShowLast(!showLast)
+
+  const toggleFavorite = (name: string) => {
+    setFavorites(favorites.includes(name) ? favorites.filter((n) => n !== name) : [...favorites, name])
+  }
+
+  const exportMixes = () => {
+    if (mixedNames.length === 0) return
+    downloadTextFile('baby-name-mixes.txt', mixedNames.join('\n'))
+  }
 
   const mixName = () => {
     let firstShuffled = shuffle(firstNames)
@@ -80,8 +93,12 @@ const Mix = () => {
   const mapMixedNames = () => {
     const reversed = [...mixedNames].reverse()
     return reversed.map((name) =>
-      <motion.div key={name} variants={listVariants}>{name}
-      </motion.div>
+      <NameRow
+        key={name}
+        name={name}
+        isFavorite={favorites.includes(name)}
+        onToggleFavorite={toggleFavorite}
+      />
     )
   }
 
@@ -95,10 +112,14 @@ const Mix = () => {
         <strong>
           {currentName}
         </strong>
+        {currentName && isUnfortunateMonogram(currentName) &&
+          <div className='monogram-note'>⚠ initials spell "{getInitials(currentName)}"</div>
+        }
       </motion.div>
       <motion.div variants={itemVariants} key='mix+settings'>
         <Button variant='square' nav={false} onClick={mixName}>MIX</Button>
         <Button variant='square' nav={false} onClick={toggleModal}>settings</Button>
+        <Button variant='square' nav={false} onClick={exportMixes}>export</Button>
       </motion.div>
       <motion.div className='names' variants={itemVariants}>
         {mapMixedNames()}

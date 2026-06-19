@@ -6,9 +6,10 @@ export interface IName {
   type: 'first' | 'middle' | 'either'
 }
 
-export const firstNamesAtom = atom<IName[]>([])
-export const lastNamesAtom = atom<string[]>([])
-export const mixedNamesAtom = atom<string[]>([])
+export const firstNamesAtom = atomWithStorage<IName[]>('firstNames', [])
+export const lastNamesAtom = atomWithStorage<string[]>('lastNames', [])
+export const mixedNamesAtom = atomWithStorage<string[]>('mixedNames', [])
+export const favoritesAtom = atomWithStorage<string[]>('favorites', [])
 
 const defaultDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
 const theme = defaultDark ? 'dark' : 'light'
