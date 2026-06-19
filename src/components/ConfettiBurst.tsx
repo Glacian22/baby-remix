@@ -65,7 +65,14 @@ const ConfettiBurst = () => {
                   pathOffset: [0, 0, 1, 1],
                   opacity: [1, 1, 0, 0],
                 }}
-                transition={{ duration: 0.6, delay: r.delay, ease: [0.83, 0, 0.17, 1], times: [0, 0.45, 0.95, 1] }}
+                transition={{
+                  duration: 0.6,
+                  delay: r.delay,
+                  ease: [0.22, 1, 0.36, 1], // ease-out only (fast start, soft landing)
+                  times: [0, 0.45, 0.95, 1],
+                  // fade harder and earlier than the erase so it drops out quickly
+                  opacity: { duration: 0.6, delay: r.delay, ease: 'easeOut', times: [0, 0.45, 0.7, 1] },
+                }}
               />
             </svg>
           </span>
