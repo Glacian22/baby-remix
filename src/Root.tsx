@@ -3,8 +3,12 @@ import App from './App.tsx'
 
 // Wraps the app in the LaunchDarkly provider. Kept in its own module so App.tsx
 // exports only a component (keeps Fast Refresh happy).
+// Defaults to the production environment's client-side ID. Override per
+// environment via VITE_LD_CLIENT_ID (e.g. .env.local pointing at test).
+const clientSideID = import.meta.env.VITE_LD_CLIENT_ID ?? '65d4351a4ab156101d38e031'
+
 const Root = withLDProvider({
-  clientSideID: '65d4351a4ab156101d38e031',
+  clientSideID,
   context: {
     kind: "user",
     anonymous: true,
