@@ -11,25 +11,25 @@ interface Ribbon {
 
 // Anchors spread around the whole name's perimeter, each line pointing outward.
 const RIBBONS: Ribbon[] = [
-  { left: '12%', top: '2%', angle: -125, length: 34, delay: 0.02 },
-  { left: '38%', top: '-2%', angle: -98, length: 42, delay: 0.07 },
-  { left: '62%', top: '-2%', angle: -78, length: 38, delay: 0 },
-  { left: '86%', top: '2%', angle: -52, length: 30, delay: 0.09 },
-  { left: '100%', top: '28%', angle: -18, length: 40, delay: 0.04 },
-  { left: '101%', top: '62%', angle: 22, length: 32, delay: 0.11 },
-  { left: '84%', top: '100%', angle: 58, length: 36, delay: 0.03 },
-  { left: '56%', top: '102%', angle: 92, length: 44, delay: 0.08 },
-  { left: '30%', top: '100%', angle: 122, length: 34, delay: 0.05 },
-  { left: '2%', top: '70%', angle: 158, length: 38, delay: 0.1 },
-  { left: '-1%', top: '34%', angle: 198, length: 40, delay: 0.06 },
-  { left: '10%', top: '4%', angle: 232, length: 30, delay: 0.12 },
+  { left: '12%', top: '2%', angle: -125, length: 22, delay: 0.02 },
+  { left: '38%', top: '-2%', angle: -98, length: 26, delay: 0.07 },
+  { left: '62%', top: '-2%', angle: -78, length: 24, delay: 0 },
+  { left: '86%', top: '2%', angle: -52, length: 20, delay: 0.09 },
+  { left: '100%', top: '28%', angle: -18, length: 26, delay: 0.04 },
+  { left: '101%', top: '62%', angle: 22, length: 20, delay: 0.11 },
+  { left: '84%', top: '100%', angle: 58, length: 22, delay: 0.03 },
+  { left: '56%', top: '102%', angle: 92, length: 28, delay: 0.08 },
+  { left: '30%', top: '100%', angle: 122, length: 22, delay: 0.05 },
+  { left: '2%', top: '70%', angle: 158, length: 24, delay: 0.1 },
+  { left: '-1%', top: '34%', angle: 198, length: 26, delay: 0.06 },
+  { left: '10%', top: '4%', angle: 232, length: 18, delay: 0.12 },
 ]
 
 // A gently squiggly stroke from x=0 to x=len, centered vertically in a 12-tall box.
 const makeSquiggle = (len: number): string => {
   const mid = 6
   const amp = 4
-  const humps = Math.max(2, Math.round(len / 13))
+  const humps = Math.max(2, Math.round(len / 6))
   const seg = len / humps
   let d = `M0 ${mid}`
   for (let i = 0; i < humps; i++) {
