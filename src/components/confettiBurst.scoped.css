@@ -5,16 +5,15 @@
   overflow: visible;
 }
 
-/* Every ribbon starts at the name's center; the inner element flies outward. */
+/* Anchored around the name; the line is drawn outward from this near end. */
 .ribbon {
   position: absolute;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
   line-height: 0;
 }
 
-.ribbon-anim {
+/* Rotate around the near end so the line points outward from the name. */
+.ribbon-rot {
   display: inline-block;
+  transform-origin: 0 50%;
   line-height: 0;
 }
