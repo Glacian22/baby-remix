@@ -5,7 +5,7 @@ import Navbar from "./components/Navbar";
 import Routes from "./Routes";
 import { themeAtom } from "./lib/atom";
 import { useAtom } from "jotai"
-import { withLDProvider, useLDClient } from "launchdarkly-react-client-sdk";
+import { useLDClient } from "launchdarkly-react-client-sdk";
 import './App.scoped.css'
 import './App.global.css'
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -16,22 +16,26 @@ function App() {
   const [dWidth] = useDebounce(width, 100);
   const ldClient = useLDClient();
 
+  // register the resize listener once
   useEffect(() => {
     const handleResize = () => {
       setWidth(window.innerWidth);
     };
     window.addEventListener('resize', handleResize);
-    
-    ldClient?.identify({
-      kind: "user",
-      anonymous: true,
-      screenWidth: width
-    });
 
     return () => {
       window.removeEventListener('resize', handleResize);
     };
-  }, [dWidth])
+  }, [])
+
+  // re-identify with LaunchDarkly when the debounced width settles
+  useEffect(() => {
+    ldClient?.identify({
+      kind: "user",
+      anonymous: true,
+      screenWidth: dWidth
+    });
+  }, [dWidth, ldClient])
 
   return (
     <div className="app-global" data-theme={theme}>
@@ -47,22 +51,4 @@ function App() {
   )
 }
 
-export default withLDProvider({
-  clientSideID: '65d4351a4ab156101d38e031',
-  context: {
-    kind: "user",
-    anonymous: true,
-    screenWidth: window.innerWidth
-  },
-  flags: {
-    "welcome-text": "Welcome to the baby name mixer!",
-    "enableUiTheme": false,
-    "enable-darkest-mode": false
-  },
-  options: {
-    bootstrap: 'localStorage',
-    // streamUrl: 'https://127.0.0.1:8030',
-    // baseUrl: 'https://127.0.0.1:8030',
-    // eventsUrl: 'https://127.0.0.1:8030'
-  }
-})(App)
+export default App

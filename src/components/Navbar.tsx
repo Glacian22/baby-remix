@@ -12,12 +12,12 @@ const Navbar = () => {
   // if not in light mode and theme button is disabled via flag, revert ui to light mode
   useEffect(() => {
     if (!enableUiTheme) setTheme('light')
-  }, [enableUiTheme])
+  }, [enableUiTheme, setTheme])
 
   // if in goth mode and LD flag is disabled, cause the ui to revert to light mode
   useEffect(() => {
     if (!enableDarkestMode && theme === 'goth') setTheme('light')
-  }, [enableDarkestMode, theme])
+  }, [enableDarkestMode, theme, setTheme])
 
   const nextTheme = () => {
     if (!enableDarkestMode){ 

@@ -2,7 +2,7 @@ import { useState } from "react"
 import Button from '../../components/Button'
 import { motion } from 'framer-motion'
 import { variants, itemVariants, listVariants } from '../../lib/anims'
-import { firstNamesAtom, lastNamesAtom, mixedNamesAtom } from "../../lib/atom"
+import { firstNamesAtom, lastNamesAtom, mixedNamesAtom, IName } from "../../lib/atom"
 import { useAtom } from 'jotai'
 import Settings from "./Settings"
 import '../firstLastName.scoped.css'
@@ -28,17 +28,22 @@ const Mix = () => {
 
     //get first occurance of a name with type: 'first' or 'either'
     const firstIndex = getNameIndex(firstShuffled, 'first')
+    if (firstIndex === -1) {
+      setCurrentName('Add at least one first name to get started!')
+      return
+    }
     tempName = firstShuffled[firstIndex].name
     firstShuffled = removeItem(firstShuffled, firstIndex)
 
-    //get some middle names
+    //get some middle names (stop early if we run out)
     for (let i = 0; i < numMiddle; i++) {
-      const middleIndex = firstShuffled.findIndex((nameObj) => (nameObj.type === 'middle' || nameObj.type === 'either'))
+      const middleIndex = getNameIndex(firstShuffled, 'middle')
+      if (middleIndex === -1) break
       tempName += " " + firstShuffled[middleIndex].name
       firstShuffled = removeItem(firstShuffled, middleIndex)
     }
 
-    if (showLast) {
+    if (showLast && lastNames.length > 0) {
       tempName += " " + lastNames[0]
     }
 
@@ -50,17 +55,23 @@ const Mix = () => {
     }
   }
 
-  const getNameIndex = (arr: Array<any>, type: 'first' | 'middle') => {
+  const getNameIndex = (arr: IName[], type: 'first' | 'middle') => {
     return arr.findIndex((nameObj) => (nameObj.type === type || nameObj.type === 'either'))
   }
 
-  const removeItem = (arr: Array<any>, index: number) => {
+  const removeItem = (arr: IName[], index: number) => {
     return [...arr.slice(0, index), ...arr.slice(index + 1, arr.length)]
   }
 
-  const shuffle = (arr: Array<any>) => {
-    return arr.sort(() => Math.random() - 0.5);
-  };
+  // Fisher–Yates shuffle on a copy (never mutate the source atom array)
+  const shuffle = (arr: IName[]): IName[] => {
+    const copy = [...arr]
+    for (let i = copy.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1))
+      ;[copy[i], copy[j]] = [copy[j], copy[i]]
+    }
+    return copy
+  }
 
   const maxMiddle = () => {
     return firstNames.filter(x => x.type === 'middle' || x.type === 'either').length
@@ -68,8 +79,8 @@ const Mix = () => {
 
   const mapMixedNames = () => {
     const reversed = [...mixedNames].reverse()
-    return reversed.map((name, i) => 
-      <motion.div key={i} variants={listVariants}>{name}
+    return reversed.map((name) =>
+      <motion.div key={name} variants={listVariants}>{name}
       </motion.div>
     )
   }
