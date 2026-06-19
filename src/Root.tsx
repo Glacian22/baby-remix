@@ -14,10 +14,11 @@ const Root = withLDProvider({
     "welcome-text": "Welcome to the baby name mixer!",
     "enableUiTheme": false,
     "enable-darkest-mode": false,
-    // Monetization features. Defaulted on here so you can preview the placement;
-    // create these flags in LaunchDarkly (defaulting OFF) before a public launch.
-    "enable-email-capture": true,
-    "enable-keepsake-cta": true
+    // Monetization features. These flags exist in LaunchDarkly (abrams-project),
+    // currently OFF in all envs. Bootstrap defaults match that; flip the flag in
+    // LD (e.g. the test env) to preview, then roll out deliberately.
+    "enable-email-capture": false,
+    "enable-keepsake-cta": false
   },
   options: {
     bootstrap: 'localStorage',
