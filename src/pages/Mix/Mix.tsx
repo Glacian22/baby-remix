@@ -111,7 +111,7 @@ const Mix = () => {
         <Button to={'lastname'} variant='square'>Back</Button>
       </motion.div>
       <motion.div variants={itemVariants} key='mixText'>Now let's mix up some baby names and see how they sound!</motion.div>
-      <motion.div variants={itemVariants} key='currentName'>
+      <motion.div className='current-name' variants={itemVariants} key='currentName'>
         <span className='current-name-wrap'>
           <strong>
             {currentName}

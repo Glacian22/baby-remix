@@ -74,6 +74,10 @@ select {
   margin-top: .25rem;
 }
 
+.current-name {
+  text-align: center;
+}
+
 .current-name-wrap {
   position: relative;
   display: inline-block;
