@@ -24,27 +24,29 @@ const Favorites = () => {
   }
 
   return (
-    <motion.div className='add-name-page' variants={variants} animate='enter' exit='exit' initial='initial'>
+    <motion.div className='favorites-page' variants={variants} animate='enter' exit='exit' initial='initial'>
       <motion.div variants={itemVariants} key='back-btn' id='back'>
         <Button to={'mix'} variant='square'>Back</Button>
       </motion.div>
       <motion.div variants={itemVariants} key='fav-title'>Your shortlist</motion.div>
-      <motion.div className='names' variants={itemVariants} key='fav-list'>
+      {enableEmailCapture && favorites.length > 0 &&
+        <motion.div variants={itemVariants} key='fav-email'>
+          <EmailCapture names={favorites} />
+        </motion.div>
+      }
+      <motion.div className='names fav-list' variants={itemVariants} key='fav-list'>
         {favorites.length === 0
           ? <div className='empty'>No favorites yet — tap the ♥ on a mix to save it here.</div>
-          : <>
-              {enableEmailCapture && <EmailCapture names={favorites} />}
-              {favorites.map((name) =>
-                <div className='favorite-item' key={name}>
-                  <NameRow
-                    name={name}
-                    isFavorite={true}
-                    onToggleFavorite={removeFavorite}
-                  />
-                  {enableKeepsakeCta && <KeepsakeCta name={name} />}
-                </div>
-              )}
-            </>
+          : favorites.map((name) =>
+              <div className='favorite-item' key={name}>
+                <NameRow
+                  name={name}
+                  isFavorite={true}
+                  onToggleFavorite={removeFavorite}
+                />
+                {enableKeepsakeCta && <KeepsakeCta name={name} />}
+              </div>
+            )
         }
       </motion.div>
       <motion.div variants={itemVariants} key='fav-export' id='next'>

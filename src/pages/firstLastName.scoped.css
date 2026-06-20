@@ -11,6 +11,29 @@
   grid-template-rows: 1fr 1fr 1fr 1fr 5fr;
 }
 
+/* Favorites: email/title/buttons stay static; only the list scrolls. */
+.favorites-page {
+  width: 100%;
+  min-width: 0;
+  transition: inherit;
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+}
+
+.favorites-page > * {
+  min-width: 0;
+}
+
+.favorites-page .fav-list {
+  flex: 1 1 auto;
+  min-height: 0;
+}
+
+.favorites-page #next {
+  align-self: flex-end;
+}
+
 .mix-page .names > * {
   margin: auto .25rem
 }

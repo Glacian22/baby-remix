@@ -6,6 +6,7 @@
   margin-bottom: .5rem;
   border: 2px dashed var(--pink);
   border-radius: var(--border-rad);
+  background-color: var(--white);
   color: black;
   -webkit-text-stroke: 0;
 }
