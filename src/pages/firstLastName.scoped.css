@@ -102,11 +102,15 @@ select {
   text-align: center;
 }
 
-/* desktop: center and enlarge the "Let's mix!" heading */
+/* desktop: center and enlarge the "Let's mix!" heading + generated name */
 @media (min-width: 768px) {
   .mix-title {
     text-align: center;
     font-size: 3rem;
+  }
+
+  .current-name-wrap {
+    font-size: 2.5rem;
   }
 }
 

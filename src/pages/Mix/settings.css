@@ -78,3 +78,19 @@
   background-color: var(--white);
   color: var(--pink);
 }
+
+.settings-modal .danger-button {
+  border: 2px solid var(--white);
+  border-radius: var(--border-rad);
+  background-color: transparent;
+  color: var(--white);
+  padding: 0.5rem 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.settings-modal .danger-button:hover {
+  background-color: var(--white);
+  color: var(--pink);
+}

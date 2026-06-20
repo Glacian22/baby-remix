@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import Button from '../../components/Button'
 import NameRow from '../../components/NameRow'
 import { motion } from 'framer-motion'
@@ -23,6 +23,11 @@ const Mix = () => {
   const [showModal, setShowModal] = useState(false)
   const [numMiddle, setNumMiddle] = useState(1)
   const [showLast, setShowLast] = useState(true)
+
+  // blank the displayed name when the list is emptied (e.g. via "clear all")
+  useEffect(() => {
+    if (mixedNames.length === 0) setCurrentName('')
+  }, [mixedNames.length])
 
   const toggleModal = () => setShowModal(!showModal)
 
