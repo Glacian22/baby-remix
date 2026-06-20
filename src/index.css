@@ -12,6 +12,15 @@
     /* @import url('https://fonts.googleapis.com/css2?family=Sunflower:wght@300&display=swap'); */
 }
 
+/* flying favorite heart (portaled to body) */
+.heart-flyer {
+  pointer-events: none;
+  z-index: 2000;
+  color: var(--pink);
+  font-size: var(--font-med);
+  line-height: 1;
+}
+
 .app-width {
   max-width: 1024px
 }

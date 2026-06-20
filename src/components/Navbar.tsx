@@ -50,7 +50,7 @@ const Navbar = () => {
         <span>Baby Mix!</span>
         <div className='nav-right'>
           <Link id='fav-link' to='/favorites'>
-            <motion.span animate={favControls} style={{ display: 'inline-block' }}>♥</motion.span> {favorites.length}
+            <motion.span id='nav-fav-heart' animate={favControls} style={{ display: 'inline-block' }}>♥</motion.span> {favorites.length}
           </Link>
           {enableUiTheme &&
             <button id='theme-btn' onClick={() => setTheme(nextTheme())}>{theme}</button>
