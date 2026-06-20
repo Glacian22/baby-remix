@@ -2,7 +2,6 @@ import { BrowserRouter as Router } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { useDebounce } from 'use-debounce';
 import Navbar from "./components/Navbar";
-import ClearAllButton from "./components/ClearAllButton";
 import Routes from "./Routes";
 import { themeAtom } from "./lib/atom";
 import { useAtom } from "jotai"
@@ -47,7 +46,6 @@ function App() {
             <Routes />
           </div>
         </Router>
-        <ClearAllButton />
       </div>
     </div >
   )

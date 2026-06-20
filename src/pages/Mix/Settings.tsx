@@ -1,6 +1,7 @@
 import Modal from 'react-bootstrap/Modal'
 import { useAtom } from 'jotai'
 import { themeAtom } from '../../lib/atom'
+import { useClearAll } from '../../lib/useClearAll'
 import './settings.css'
 
 interface Props {
@@ -15,6 +16,11 @@ interface Props {
 
 const Settings = ({ show, toggleModal, middle, setMiddle, showLast, toggleLast, maxMiddle }: Props) => {
   const [theme] = useAtom(themeAtom)
+  const clearAll = useClearAll()
+
+  const handleClear = () => {
+    if (clearAll()) toggleModal()
+  }
 
   return (
     <Modal centered show={show} onHide={toggleModal} dialogClassName='settings-modal' data-theme={theme}>
@@ -33,6 +39,10 @@ const Settings = ({ show, toggleModal, middle, setMiddle, showLast, toggleLast, 
         <div className='setting-group'>
           <span>Show last name:</span>
           <button className='toggle-button' onClick={toggleLast}>{showLast ? 'yes' : 'no'}</button>
+        </div>
+        <div className='setting-group'>
+          <span>Clear all names &amp; favorites</span>
+          <button className='danger-button' onClick={handleClear}>clear all</button>
         </div>
       </Modal.Body>
     </Modal>
