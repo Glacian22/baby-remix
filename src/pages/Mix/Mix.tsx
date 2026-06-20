@@ -112,17 +112,15 @@ const Mix = () => {
       <motion.div variants={itemVariants} key='mixText'>Now let's mix up some baby names and see how they sound!</motion.div>
       <motion.div className='current-name' variants={itemVariants} key='currentName'>
         {currentName &&
-          <span className='current-name-wrap'>
-            <motion.strong
-              key={popKey}
-              initial={{ scale: 0.85 }}
-              animate={{ scale: [0.85, 1.08, 0.96, 1] }}
-              transition={{ duration: 0.3, ease: 'easeOut', times: [0, 0.45, 0.7, 0.88, 1] }}
-              style={{ display: 'inline-block' }}
-            >
-              {currentName}
-            </motion.strong>
-          </span>
+          <motion.span
+            className='current-name-wrap'
+            key={popKey}
+            initial={{ scale: 0.85 }}
+            animate={{ scale: [0.85, 1.08, 0.96, 1] }}
+            transition={{ duration: 0.3, ease: 'easeOut', times: [0, 0.45, 0.7, 0.88, 1] }}
+          >
+            <strong>{currentName}</strong>
+          </motion.span>
         }
         {currentName && isUnfortunateMonogram(currentName) &&
           <div className='monogram-note'>⚠ initials spell "{getInitials(currentName)}"</div>
