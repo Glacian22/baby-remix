@@ -22,7 +22,10 @@ const Root = withLDProvider({
     // currently OFF in all envs. Bootstrap defaults match that; flip the flag in
     // LD (e.g. the test env) to preview, then roll out deliberately.
     "enable-email-capture": false,
-    "enable-keepsake-cta": false
+    "enable-keepsake-cta": false,
+    // Gate the export buttons (Mix + Favorites). OFF everywhere in LD; enable
+    // in test to preview.
+    "enable-export": false
   },
   options: {
     bootstrap: 'localStorage',
