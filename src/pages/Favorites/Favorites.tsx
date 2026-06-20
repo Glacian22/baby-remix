@@ -12,7 +12,7 @@ import '../firstLastName.scoped.css'
 
 const Favorites = () => {
   const [favorites, setFavorites] = useAtom(favoritesAtom)
-  const { enableEmailCapture, enableKeepsakeCta } = useFlags()
+  const { enableEmailCapture, enableKeepsakeCta, enableExport } = useFlags()
 
   const removeFavorite = (name: string) => {
     setFavorites(favorites.filter((n) => n !== name))
@@ -49,9 +49,11 @@ const Favorites = () => {
             )
         }
       </motion.div>
-      <motion.div variants={itemVariants} key='fav-export' id='next'>
-        <Button variant='square' nav={false} onClick={exportFavorites}>export favorites</Button>
-      </motion.div>
+      {enableExport &&
+        <motion.div variants={itemVariants} key='fav-export' id='next'>
+          <Button variant='square' nav={false} onClick={exportFavorites}>export favorites</Button>
+        </motion.div>
+      }
     </motion.div>
   )
 }

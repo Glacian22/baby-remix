@@ -5,6 +5,7 @@ import { motion } from 'framer-motion'
 import { variants, itemVariants } from '../../lib/anims'
 import { firstNamesAtom, lastNamesAtom, mixedNamesAtom, favoritesAtom, IName } from "../../lib/atom"
 import { useAtom } from 'jotai'
+import { useFlags } from 'launchdarkly-react-client-sdk'
 import { getInitials, isUnfortunateMonogram } from '../../lib/names'
 import { downloadTextFile } from '../../lib/io'
 import Settings from "./Settings"
@@ -12,6 +13,7 @@ import '../firstLastName.scoped.css'
 
 const Mix = () => {
 
+  const { enableExport } = useFlags()
   const [firstNames] = useAtom(firstNamesAtom)
   const [lastNames] = useAtom(lastNamesAtom)
   const [mixedNames, setMixedNames] = useAtom(mixedNamesAtom)
@@ -129,7 +131,7 @@ const Mix = () => {
       <motion.div className='mix-actions' variants={itemVariants} key='mix+settings'>
         <Button variant='square' nav={false} onClick={mixName}>MIX</Button>
         <Button variant='square' nav={false} onClick={toggleModal}>settings</Button>
-        <Button variant='square' nav={false} onClick={exportMixes}>export</Button>
+        {enableExport && <Button variant='square' nav={false} onClick={exportMixes}>export</Button>}
       </motion.div>
       <motion.div className='names' variants={itemVariants}>
         {mapMixedNames()}
