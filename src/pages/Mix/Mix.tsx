@@ -10,7 +10,6 @@ import { downloadTextFile } from '../../lib/io'
 import Settings from "./Settings"
 import '../firstLastName.scoped.css'
 
-// TODO: guard against no names entered
 const Mix = () => {
 
   const [firstNames] = useAtom(firstNamesAtom)
