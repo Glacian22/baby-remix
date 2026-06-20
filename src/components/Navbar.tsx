@@ -1,5 +1,6 @@
-import { useEffect } from "react"
+import { useEffect, useRef } from "react"
 import { Link } from "react-router-dom"
+import { motion, useAnimationControls } from "framer-motion"
 import { themeAtom, favoritesAtom } from "../lib/atom"
 import { useAtom } from "jotai"
 import { useFlags } from 'launchdarkly-react-client-sdk'
@@ -10,6 +11,19 @@ const Navbar = () => {
   const [theme, setTheme] = useAtom(themeAtom)
   const [favorites] = useAtom(favoritesAtom)
   const { enableUiTheme, enableDarkestMode } = useFlags()
+
+  // pop the heart + count when a favorite is added (not on load or removal)
+  const favControls = useAnimationControls()
+  const prevFavCount = useRef(favorites.length)
+  useEffect(() => {
+    if (favorites.length > prevFavCount.current) {
+      favControls.start({
+        scale: [0.85, 1.08, 0.96, 1],
+        transition: { duration: 0.3, ease: 'easeOut', times: [0, 0.45, 0.7, 0.88, 1] },
+      })
+    }
+    prevFavCount.current = favorites.length
+  }, [favorites.length, favControls])
 
   // if not in light mode and theme button is disabled via flag, revert ui to light mode
   useEffect(() => {
@@ -35,7 +49,9 @@ const Navbar = () => {
       <div className='app-width'>
         <span>Baby Mix!</span>
         <div className='nav-right'>
-          <Link id='fav-link' to='/favorites'>♥ {favorites.length}</Link>
+          <Link id='fav-link' to='/favorites'>
+            <motion.span animate={favControls} style={{ display: 'inline-block' }}>♥</motion.span> {favorites.length}
+          </Link>
           {enableUiTheme &&
             <button id='theme-btn' onClick={() => setTheme(nextTheme())}>{theme}</button>
           }
