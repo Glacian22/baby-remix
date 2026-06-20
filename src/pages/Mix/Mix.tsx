@@ -126,7 +126,7 @@ const Mix = () => {
           }
         </>}
       </motion.div>
-      <motion.div variants={itemVariants} key='mix+settings'>
+      <motion.div className='mix-actions' variants={itemVariants} key='mix+settings'>
         <Button variant='square' nav={false} onClick={mixName}>MIX</Button>
         <Button variant='square' nav={false} onClick={toggleModal}>settings</Button>
         <Button variant='square' nav={false} onClick={exportMixes}>export</Button>
