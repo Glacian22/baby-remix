@@ -81,6 +81,9 @@ select {
 .current-name-wrap {
   position: relative;
   display: inline-block;
+  border: 2px solid var(--white);
+  border-radius: var(--border-rad);
+  padding: .25rem .5rem;
 }
 
 .names button {
