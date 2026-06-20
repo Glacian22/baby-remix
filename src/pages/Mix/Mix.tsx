@@ -57,7 +57,8 @@ const Mix = () => {
     }
 
     if (showLast && lastNames.length > 0) {
-      tempName += " " + lastNames[0]
+      const randomLast = lastNames[Math.floor(Math.random() * lastNames.length)]
+      tempName += " " + randomLast
     }
 
     setCurrentName(tempName)
