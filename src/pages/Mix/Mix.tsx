@@ -111,7 +111,7 @@ const Mix = () => {
       </motion.div>
       <motion.div variants={itemVariants} key='mixText'>Now let's mix up some baby names and see how they sound!</motion.div>
       <motion.div className='current-name' variants={itemVariants} key='currentName'>
-        {currentName &&
+        {currentName && <>
           <motion.span
             className='current-name-wrap'
             key={popKey}
@@ -121,10 +121,10 @@ const Mix = () => {
           >
             <strong>{currentName}</strong>
           </motion.span>
-        }
-        {currentName && isUnfortunateMonogram(currentName) &&
-          <div className='monogram-note'>⚠ initials spell "{getInitials(currentName)}"</div>
-        }
+          {isUnfortunateMonogram(currentName) &&
+            <div className='monogram-note'>⚠ initials spell "{getInitials(currentName)}"</div>
+          }
+        </>}
       </motion.div>
       <motion.div variants={itemVariants} key='mix+settings'>
         <Button variant='square' nav={false} onClick={mixName}>MIX</Button>
