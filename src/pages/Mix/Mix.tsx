@@ -109,7 +109,7 @@ const Mix = () => {
       <motion.div variants={itemVariants} key='next-btn' id='back'>
         <Button to={'lastname'} variant='square'>Back</Button>
       </motion.div>
-      <motion.div variants={itemVariants} key='mixText' style={{paddingTop: '.75rem'}}>Let's mix!</motion.div>
+      <motion.div className='mix-title' variants={itemVariants} key='mixText' style={{paddingTop: '.75rem'}}>Let's mix!</motion.div>
       <motion.div className='current-name' variants={itemVariants} key='currentName'>
         {currentName && <>
           <motion.span

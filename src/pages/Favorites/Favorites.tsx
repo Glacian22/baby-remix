@@ -28,7 +28,7 @@ const Favorites = () => {
       <motion.div variants={itemVariants} key='back-btn' id='back'>
         <Button to={'mix'} variant='square'>Back</Button>
       </motion.div>
-      <motion.div variants={itemVariants} key='fav-title'>Your shortlist</motion.div>
+      <motion.div variants={itemVariants} key='fav-title' style={{paddingTop: '.75rem'}}>Your shortlist</motion.div>
       {enableEmailCapture && favorites.length > 0 &&
         <motion.div variants={itemVariants} key='fav-email'>
           <EmailCapture names={favorites} />
