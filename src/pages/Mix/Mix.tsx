@@ -18,7 +18,7 @@ const Mix = () => {
   const [mixedNames, setMixedNames] = useAtom(mixedNamesAtom)
   const [favorites, setFavorites] = useAtom(favoritesAtom)
   const [currentName, setCurrentName] = useState('')
-  const [burstKey, setBurstKey] = useState(0)
+  const [popKey, setPopKey] = useState(0)
   const [showModal, setShowModal] = useState(false)
   const [numMiddle, setNumMiddle] = useState(1)
   const [showLast, setShowLast] = useState(true)
@@ -62,7 +62,7 @@ const Mix = () => {
     }
 
     setCurrentName(tempName)
-    setBurstKey((k) => k + 1) // bump the key to replay the elastic pop on each mix
+    setPopKey((k) => k + 1) // bump the key to replay the elastic pop on each mix
 
     // add name to list, unless it already exists
     if (mixedNames.indexOf(tempName) === -1) {
@@ -114,7 +114,7 @@ const Mix = () => {
         {currentName &&
           <span className='current-name-wrap'>
             <motion.strong
-              key={burstKey}
+              key={popKey}
               initial={{ scale: 0.85 }}
               animate={{ scale: [0.85, 1.08, 0.96, 1] }}
               transition={{ duration: 0.3, ease: 'easeOut', times: [0, 0.45, 0.7, 0.88, 1] }}
