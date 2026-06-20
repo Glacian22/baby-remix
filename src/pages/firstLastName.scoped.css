@@ -6,9 +6,33 @@
 }
 
 .mix-page {
+  width: 100%;
   transition: inherit;
   display: grid;
-  grid-template-rows: 1fr 1fr 1fr 1fr 5fr;
+  grid-template-rows: 1fr 1fr auto 1fr 5fr;
+}
+
+/* Favorites: email/title/buttons stay static; only the list scrolls. */
+.favorites-page {
+  width: 100%;
+  min-width: 0;
+  transition: inherit;
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+}
+
+.favorites-page > * {
+  min-width: 0;
+}
+
+.favorites-page .fav-list {
+  flex: 1 1 auto;
+  min-height: 0;
+}
+
+.favorites-page #next {
+  align-self: flex-end;
 }
 
 .mix-page .names > * {
@@ -76,6 +100,14 @@ select {
 
 .current-name {
   text-align: center;
+}
+
+/* desktop: center and enlarge the "Let's mix!" heading */
+@media (min-width: 768px) {
+  .mix-title {
+    text-align: center;
+    font-size: 3rem;
+  }
 }
 
 .mix-actions {
