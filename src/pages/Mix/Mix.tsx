@@ -1,7 +1,6 @@
 import { useState } from "react"
 import Button from '../../components/Button'
 import NameRow from '../../components/NameRow'
-import ConfettiBurst from '../../components/ConfettiBurst'
 import { motion } from 'framer-motion'
 import { variants, itemVariants } from '../../lib/anims'
 import { firstNamesAtom, lastNamesAtom, mixedNamesAtom, favoritesAtom, IName } from "../../lib/atom"
@@ -63,7 +62,7 @@ const Mix = () => {
     }
 
     setCurrentName(tempName)
-    setBurstKey((k) => k + 1) // replay the sparkle burst on each successful mix
+    setBurstKey((k) => k + 1) // bump the key to replay the elastic pop on each mix
 
     // add name to list, unless it already exists
     if (mixedNames.indexOf(tempName) === -1) {
@@ -113,10 +112,15 @@ const Mix = () => {
       <motion.div variants={itemVariants} key='mixText'>Now let's mix up some baby names and see how they sound!</motion.div>
       <motion.div className='current-name' variants={itemVariants} key='currentName'>
         <span className='current-name-wrap'>
-          <strong>
+          <motion.strong
+            key={burstKey}
+            initial={{ scale: 0.85 }}
+            animate={{ scale: [0.85, 1.08, 0.96, 1.02, 1] }}
+            transition={{ duration: 0.3, ease: 'easeOut', times: [0, 0.45, 0.7, 0.88, 1] }}
+            style={{ display: 'inline-block' }}
+          >
             {currentName}
-          </strong>
-          {burstKey > 0 && <ConfettiBurst key={burstKey} />}
+          </motion.strong>
         </span>
         {currentName && isUnfortunateMonogram(currentName) &&
           <div className='monogram-note'>⚠ initials spell "{getInitials(currentName)}"</div>
