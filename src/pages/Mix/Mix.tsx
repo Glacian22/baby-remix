@@ -10,7 +10,6 @@ import { downloadTextFile } from '../../lib/io'
 import Settings from "./Settings"
 import '../firstLastName.scoped.css'
 
-// TODO: guard against no names entered
 const Mix = () => {
 
   const [firstNames] = useAtom(firstNamesAtom)
@@ -18,6 +17,7 @@ const Mix = () => {
   const [mixedNames, setMixedNames] = useAtom(mixedNamesAtom)
   const [favorites, setFavorites] = useAtom(favoritesAtom)
   const [currentName, setCurrentName] = useState('')
+  const [popKey, setPopKey] = useState(0)
   const [showModal, setShowModal] = useState(false)
   const [numMiddle, setNumMiddle] = useState(1)
   const [showLast, setShowLast] = useState(true)
@@ -57,10 +57,12 @@ const Mix = () => {
     }
 
     if (showLast && lastNames.length > 0) {
-      tempName += " " + lastNames[0]
+      const randomLast = lastNames[Math.floor(Math.random() * lastNames.length)]
+      tempName += " " + randomLast
     }
 
     setCurrentName(tempName)
+    setPopKey((k) => k + 1) // bump the key to replay the elastic pop on each mix
 
     // add name to list, unless it already exists
     if (mixedNames.indexOf(tempName) === -1) {
@@ -107,16 +109,24 @@ const Mix = () => {
       <motion.div variants={itemVariants} key='next-btn' id='back'>
         <Button to={'lastname'} variant='square'>Back</Button>
       </motion.div>
-      <motion.div variants={itemVariants} key='mixText'>Now let's mix up some baby names and see how they sound!</motion.div>
-      <motion.div variants={itemVariants} key='currentName'>
-        <strong>
-          {currentName}
-        </strong>
-        {currentName && isUnfortunateMonogram(currentName) &&
-          <div className='monogram-note'>⚠ initials spell "{getInitials(currentName)}"</div>
-        }
+      <motion.div variants={itemVariants} key='mixText' style={{paddingTop: '.75rem'}}>Let's mix!</motion.div>
+      <motion.div className='current-name' variants={itemVariants} key='currentName'>
+        {currentName && <>
+          <motion.span
+            className='current-name-wrap'
+            key={popKey}
+            initial={{ scale: 0.85 }}
+            animate={{ scale: [0.85, 1.08, 0.96, 1] }}
+            transition={{ duration: 0.3, ease: 'easeOut', times: [0, 0.45, 0.7, 0.88, 1] }}
+          >
+            <strong>{currentName}</strong>
+          </motion.span>
+          {isUnfortunateMonogram(currentName) &&
+            <div className='monogram-note'>⚠ initials spell "{getInitials(currentName)}"</div>
+          }
+        </>}
       </motion.div>
-      <motion.div variants={itemVariants} key='mix+settings'>
+      <motion.div className='mix-actions' variants={itemVariants} key='mix+settings'>
         <Button variant='square' nav={false} onClick={mixName}>MIX</Button>
         <Button variant='square' nav={false} onClick={toggleModal}>settings</Button>
         <Button variant='square' nav={false} onClick={exportMixes}>export</Button>
