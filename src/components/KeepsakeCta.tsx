@@ -1,21 +1,16 @@
 import { useState } from 'react'
+import { useLDClient } from 'launchdarkly-react-client-sdk'
 import { getInitials } from '../lib/names'
+import { KEEPSAKE_PRODUCTS, buildKeepsakeUrl, trackKeepsakeClick } from '../lib/keepsake'
 import './keepsakeCta.scoped.css'
 
 interface Props {
   name: string
 }
 
-// MOCKUP ONLY — placeholder products to evaluate placement. Wire each to a real
-// affiliate / print-on-demand link (Etsy, Minted, Printful, …) before launch.
-const PRODUCTS = [
-  { label: 'Nursery print', price: '$24' },
-  { label: 'Name blanket', price: '$36' },
-  { label: 'Birth announcement', price: '$18' },
-]
-
 const KeepsakeCta = ({ name }: Props) => {
   const [open, setOpen] = useState(false)
+  const ldClient = useLDClient()
 
   return (
     <div className='keepsake'>
@@ -29,20 +24,22 @@ const KeepsakeCta = ({ name }: Props) => {
             <span className='keepsake-name'>{name}</span>
           </div>
           <div className='keepsake-products'>
-            {PRODUCTS.map((product) =>
+            {KEEPSAKE_PRODUCTS.map((product) =>
               <a
-                key={product.label}
+                key={product.id}
                 className='keepsake-product'
-                href='#'
-                onClick={(e) => e.preventDefault()}
+                href={buildKeepsakeUrl(product, name)}
+                target='_blank'
+                rel='noopener noreferrer sponsored'
+                onClick={() => trackKeepsakeClick(ldClient, product, name)}
               >
                 <span>{product.label}</span>
-                <span className='keepsake-price'>{product.price}</span>
+                <span className='keepsake-price'>{product.priceFrom}</span>
               </a>
             )}
           </div>
           <span className='keepsake-disclaimer'>
-            Mock placement · we may earn a commission on purchases
+            Opens a shop with “{name}” pre-filled · we may earn a commission on purchases
           </span>
         </div>
       }
