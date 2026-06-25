@@ -47,7 +47,7 @@ const Navbar = () => {
   return (
     <nav>
       <div className='app-width'>
-        <span>Baby Mix!</span>
+        <Link id='nav-brand' to='/'>Baby Mix!</Link>
         <div className='nav-right'>
           <Link id='fav-link' to='/favorites'>
             <motion.span id='nav-fav-heart' animate={favControls} style={{ display: 'inline-block' }}>♥</motion.span> {favorites.length}

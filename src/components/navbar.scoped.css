@@ -13,6 +13,18 @@ nav > .app-width {
   transition: inherit
 }
 
+#nav-brand {
+  color: var(--white);
+  text-decoration: none;
+  font-weight: bold;
+  font-size: var(--font-lg);
+  transition: inherit;
+}
+
+#nav-brand:hover {
+  text-decoration: underline;
+}
+
 nav .nav-right {
   display: flex;
   align-items: center;
